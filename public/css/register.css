@@ -41,7 +41,7 @@ form p
     transition: 1s all ease-in-out;
 }
 
-p.flex
+div.flex
 {
     display: flex;
     justify-content: center;
