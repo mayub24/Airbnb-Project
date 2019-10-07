@@ -152,24 +152,33 @@ i#foot:hover
 
 @media(max-width: 700px) 
 {
+
+    *
+    {
+        font-family: 'Courier New', Courier, monospace;
+    }
  
+    .list
+    {
+        flex-direction: column;
+    }
+
     ul
     {
-        display: block;
+        flex-direction: column;
         text-align: center;
     }
 
-    li > a:hover
-    {
-        color: black;
-        transition: all 1s ease-in-out;
-        border-bottom: 2px solid black;
-        padding-bottom: 0.02em;
-    }
-
-    ul.chng
+    .list > button, input
     {
         display: none;
+    }
+
+    ul a
+    {
+        font-size: 1.2em;
+        font-weight: bold;
+        letter-spacing: 0.2em;
     }
 
 }
