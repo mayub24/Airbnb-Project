@@ -56,7 +56,7 @@ app.get('/register', (req, res) =>
 
 
 // Setting up server
-const PORT = 5000 || process.env.PORT;
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () =>
 {
