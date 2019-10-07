@@ -167,5 +167,10 @@ i#foot:hover
         padding-bottom: 0.02em;
     }
 
+    ul.chng
+    {
+        display: none;
+    }
+
 }
 
