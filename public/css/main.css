@@ -54,14 +54,6 @@ button
     margin: 1em;
 }
 
-li > a:hover
-{
-    color: black;
-    transition: all 1s ease-in-out;
-    border-bottom: 2px solid black;
-    padding-bottom: 0.5em;
-}
-
 footer
 {
     bottom: 0;
@@ -155,7 +147,7 @@ i#foot:hover
 
     *
     {
-        font-family: 'Courier New', Courier, monospace;
+        font-family: Georgia, 'Times New Roman', Times, serif;
     }
  
     .list
@@ -163,13 +155,14 @@ i#foot:hover
         flex-direction: column;
     }
 
-    ul
+    ul > li
     {
         flex-direction: column;
         text-align: center;
+        border-left: 2px solid black;
     }
 
-    .list > button, input
+    .list > button, .list > input
     {
         display: none;
     }
@@ -179,6 +172,7 @@ i#foot:hover
         font-size: 1.2em;
         font-weight: bold;
         letter-spacing: 0.2em;
+        font-variant: small-caps;
     }
 
 }

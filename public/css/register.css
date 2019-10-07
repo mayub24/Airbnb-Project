@@ -1,7 +1,7 @@
 .contact form
 {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 50% 50%;
     max-width: 800px;
     margin: 0 auto;
     padding: 1.2em;
@@ -55,4 +55,24 @@ select
     text-align: center;
     padding: 0.8em;
     margin-top: 1.1em;
+}
+
+@media(max-width:900px)
+{
+    .contact form
+    {
+        display: block;
+    }
+
+    .contact form label
+    {
+        font-weight: bold;
+    }
+
+    .contact form input
+    {
+        border-radius: 5px;
+        border: black 1px solid;
+        padding: 0.8em;
+    }
 }
