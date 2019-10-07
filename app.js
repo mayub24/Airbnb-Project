@@ -56,7 +56,7 @@ app.get('/register', (req, res) =>
 
 
 // Setting up server
-const PORT = 5000;
+const PORT = 5000 || process.env.PORT;
 
 app.listen(PORT, () =>
 {
@@ -73,8 +73,16 @@ GIT STEPS:
 *****(if changes are made, do 1. git add . and 2. git commit -m "Second commit" again)***
 git log -> check history of all git commits that have been made
 HEAD -> most recent commit
-4. Create and connect to a remote repository
-5. Push changes to remote repositorycd
+*If we make a mistake we can use ref# to go back and get the older commit*
+4. Create and connect to a remote repository (git remote add origin https://github.com/mayub24/... [origin can be anything] )
+5. Push changes to remote repository (git push -u origin master) -> This pushes the latest commit
+
+6. if we wanna clone other ppls projects jus type [git clone url]
+
+
+HEROKU STEPS:
+
+hero
 
 
 */
