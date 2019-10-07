@@ -1,0 +1,58 @@
+.contact form
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.2em;
+}
+
+
+.contact form .grid-area
+{
+    grid-column: 1/3; 
+    /* Specifies which column each item should be placed in, (goes vertically) */
+    /* grid-row: 9; Specifies which row the items should be in, (goes up and down ) */
+}
+
+.contact form button, .contact form input
+{
+    width: 100%;
+    padding: 6px;
+}
+
+form p
+{
+    padding: 0.5em;
+}
+
+.head2
+{
+    text-align: center;
+    font-size: 3em;
+    margin-bottom: -1em;
+}
+
+.grid-area > a > button:hover
+{
+    background-color: #ff5a5f;
+    color: white;
+    cursor: pointer;
+    transition: 1s all ease-in-out;
+}
+
+p.flex
+{
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    align-content: center;   
+}
+
+select
+{
+    margin: 0 auto;
+    text-align: center;
+    padding: 0.8em;
+    margin-top: 1.1em;
+}

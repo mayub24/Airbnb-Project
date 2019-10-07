@@ -1,0 +1,4 @@
+node_modules
+
+# css/ means exclude all css files
+# js/ means exclude all js files

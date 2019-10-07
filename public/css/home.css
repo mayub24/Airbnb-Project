@@ -1,0 +1,245 @@
+.bg-img
+{
+    background-image: url('../img/ggb.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    height: 650px;
+    background-position: center;
+    margin-top: -1.5em;
+    background-repeat: no-repeat; /* Doesnt repeat photo */
+    transition: all 1s ease-in-out;
+
+    /* Flexes all items inside bg-img */
+    font-family: monospace;
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+}
+
+.title
+{
+    font-size: 4em;
+    color: black;
+}
+
+
+a > button:hover
+{
+    background-color: #ff5a5f;
+    cursor: pointer;
+    color: white;
+}
+
+.title > h1
+{
+    font-size: 1em;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    color: white;
+    padding-right: 2em;
+}
+
+.place
+{
+    width: 100%;
+    object-fit: cover;
+}
+
+.inner div
+{
+    max-width: 500px;
+    margin: 0 auto;
+    padding: 1em 2em;
+}
+
+i#web
+{
+    font-size: 8em;
+    margin-bottom: 0.2em;
+    cursor: pointer;
+    color: pink;
+}
+
+i#web:hover
+{
+    transition: all 1s ease-in-out;
+}
+
+.inner
+{
+    margin-bottom: 1.5em;
+}
+
+.grid
+{
+    display: grid;
+}
+
+
+#pak
+{
+    grid-row: 1/2;
+    grid-column:1/6;
+}
+
+#rom
+{
+    grid-row: 2;
+    grid-column: 1/2;
+}
+
+#par
+{
+    grid-row: 3;
+    grid-column: 1/6;
+    z-index: 1;
+    margin-top: -60px;
+}
+
+.grid
+{
+    max-width: 80%;
+    height: 50%;
+    margin: 0 auto;
+}
+
+.places > h1
+{
+    margin: 0em 0em;
+    text-align: center;
+    font-size: 3em;
+    text-transform: uppercase;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#web:hover
+{
+    color: #ff5a5f;
+}
+
+.air-vid
+{
+    margin: 0 auto;
+    display: block;
+    padding: 2em;
+}
+
+.info h1
+{
+    text-align: center;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+.book
+{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 1.2em;
+    color: white;
+    font-weight: bold;
+    grid-gap: 0.5em;
+}
+
+.form input, .book form select
+{
+    width: 100%;
+    padding: 6px;
+}
+
+.book p 
+{
+    margin: 2em 0px;
+}
+
+.title > h1
+{
+    margin-top: 0.65em;
+}
+
+.form
+{
+    border: 5px solid #ff5a5f;
+    padding: 1em;
+}
+
+.title > i
+{
+    font-size: 3em;
+}
+
+@media(min-width: 800px)
+{
+    .inner
+    {
+        display: flex;
+        justify-content: space-around;
+    }
+    
+    .inner > div
+    {
+        max-width: 400px;
+    } 
+
+    .inner > div > i
+    {
+        display: inline-block;
+        width: 100%;
+        text-align: center;
+        margin-left: -10px;
+    }
+
+    video
+    {
+        width: 70%;
+        height: 70%;
+    }
+
+}
+
+@media(max-width: 800px)
+{
+    .title > h1
+    {
+        display: none;
+    }
+
+    .title i
+    {
+        display: none;
+    }
+
+    .book form > p input, .book form > p select
+    {
+        width: 100%;
+        padding: 6px;
+    }
+    
+    .book
+    {
+        display: block;
+        margin: 0 auto;
+    }
+
+    .book p 
+    {
+        margin: 2em 0px;
+    }
+
+    .book form > p input
+    {
+        width: 400px;
+    }
+
+    .book form > p label
+    {
+        font-size: 1.5em;
+    }
+
+
+}
