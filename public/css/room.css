@@ -50,8 +50,22 @@ h1
 
 @media(max-width: 800px)
 {
+    .high1
+    {
+        font-size: 1.5em;
+    }
+
     .box
     {
         grid-template-columns: repeat(2, 1fr);
     }
+}
+
+@media(max-width: 600px)
+{
+    .box
+    {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
 }

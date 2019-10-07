@@ -18,7 +18,12 @@
 .contact form button, .contact form input
 {
     width: 100%;
-    padding: 6px;
+    /* padding: 6px; */
+}
+
+.contact form button
+{
+    margin-left: -4px;
 }
 
 form p
