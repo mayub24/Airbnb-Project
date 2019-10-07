@@ -24,6 +24,11 @@ ul
     background-color: #ff5a5f;
 }
 
+.list > i
+{
+    display: none;
+}
+
 ul > li > a
 {
     color: white;
@@ -142,6 +147,11 @@ i#foot:hover
     transition: 0.5s all ease-in-out;
 }
 
+.list > i:hover
+{
+    cursor: pointer;
+}
+
 @media(max-width: 700px) 
 {
 
@@ -150,6 +160,12 @@ i#foot:hover
         font-family: Georgia, 'Times New Roman', Times, serif;
     }
  
+    
+    .list > i
+    {
+        display: block;
+    }
+
     .list
     {
         flex-direction: column;
@@ -162,8 +178,9 @@ i#foot:hover
         border-left: 2px solid black;
     }
 
-    .list > button, .list > input
+    .inp, .srch
     {
+        width: 90%;
         display: none;
     }
 
