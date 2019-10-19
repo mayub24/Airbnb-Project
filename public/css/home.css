@@ -173,6 +173,15 @@ i#web:hover
     font-size: 3em;
 }
 
+.btn-srch
+{
+    flex: 0.15;
+    border-radius: 1em;
+    padding: 0.6em;
+    margin: 1em;
+}
+
+
 @media(min-width: 800px)
 {
     .inner

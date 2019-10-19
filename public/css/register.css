@@ -29,6 +29,12 @@
 form p
 {
     padding: 0.5em;
+    margin: 12px 0px;
+}
+
+form p input
+{
+    padding: 0.5em;
 }
 
 .head2

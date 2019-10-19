@@ -51,14 +51,6 @@ form > .inp, .btn
     border: none;
 }
 
-button
-{
-    flex: 0.15;
-    border-radius: 1em;
-    padding: 0.6em;
-    margin: 1em;
-}
-
 footer
 {
     bottom: 0;
@@ -151,6 +143,77 @@ i#foot:hover
 {
     cursor: pointer;
 }
+
+.inp
+{
+    display: none;
+}
+
+.srch
+{
+    display: none;
+}
+
+.search-hotel
+{
+    flex: 0.15;
+    border-radius: 1em;
+    padding: 0.6em;
+    margin: 1em;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+.search-hotel:hover
+{
+    cursor: pointer;
+    background-color: pink;
+    color: black;
+    transition: 1s all ease-in-out;
+}
+
+.search-hotel
+{
+    display: none;
+}
+
+
+/* Editing the login and button */
+.user-name
+{
+    flex: 0.30;
+}
+
+.pass-word
+{
+    flex: 0.30;
+}
+
+.log-in
+{
+    flex: 0.10;
+}
+
+.user-name, .pass-word
+{
+    border-radius: 5px;
+    border: lightgray 1px solid;
+    padding: 0.4em;
+}
+
+.log-in
+{
+        border-radius: 5px;
+        padding: 0.4em;
+}
+
+.log-in:hover
+{
+    cursor: pointer;
+    background-color: lightpink;
+    transition: all 0.5s ease-in-out;
+}
+
 
 @media(max-width: 700px) 
 {

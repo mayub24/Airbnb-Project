@@ -47,6 +47,37 @@ h1
       margin-left: 0.5em;
   }
   
+  .inp
+{
+    display: block;
+}
+
+.srch
+{
+    display: block;
+}
+
+.user-name
+{
+    display: none;
+}
+
+.pass-word
+{
+    display: none;
+}
+
+.log-in
+{
+    display: none;
+}
+
+.search-hotel
+{
+    display: block;
+}
+
+
 
 @media(max-width: 800px)
 {
