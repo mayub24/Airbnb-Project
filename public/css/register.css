@@ -1,3 +1,8 @@
+body
+{
+    overflow-x: hidden;
+}
+
 .contact form .grid-time
 {
     display: block;
@@ -65,6 +70,7 @@ form p button
 h4
 {
     margin-left: 4px;
+    margin-top: 0.6em;
 }
 
 #sign
@@ -74,6 +80,7 @@ h4
 
 .head2
 {
+    margin-top: 0.3em;
     text-align: left;
     font-size: 3em;
     margin-bottom: -1em;
@@ -144,6 +151,11 @@ span#bold
 
 @media(max-width:800px)
 {
+    *
+    {
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
     .contact form
     {
         display: grid;

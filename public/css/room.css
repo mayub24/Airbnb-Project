@@ -25,6 +25,11 @@ h1
     margin: auto;
 }
 
+.list
+{
+    padding-bottom: 5px;
+}
+
 
 .htl:hover {
     transform: scale(1.1); 

@@ -1,11 +1,21 @@
 // Getting express and handlebars modules
 const express = require('express');
 const handle = require('express-handlebars');
+// Adding nodemailer/body-parser
+const bodyParser = require(`body-parser`);
+// Adding mongoose/mongodb
+
+
 
 const app = express();
 
 // Providing static files
 app.use(express.static('public'));
+
+// Body parser middleware
+// Tells express to parse all submitted form data into the body of the request object
+app.use(bodyParser.urlencoded({ extended: false }));
+
 
 
 // Specifiying handlebar stuff
@@ -53,6 +63,121 @@ app.get('/register', (req, res) =>
         sty: style
     });
 })
+
+
+// POST REQUEST TO HANDLE ERRORS AND NODEMAILER
+app.post('/send', (req, res) =>
+{
+    const errors = [];
+
+    console.log(req.body);
+
+    if(req.body.usr == "")
+    {
+        errors.push('Please enter a name');
+    }
+
+    if(req.body.pass == "")
+    {
+        errors.push('Please enter a password');
+    }
+
+    if(req.body.adrs == "")
+    {
+        errors.push('Please enter an address')
+    }
+
+    if(req.body.pNum == "")
+    {
+        errors.push('Please enter a number');
+    }
+
+    if(req.body.eml == "")
+    {
+        errors.push('Please enter an email');
+    }
+
+
+    // Checking for errors
+    if(errors.length > 0)
+    {
+        const title = 'Airbnb | Register';
+        const style = 'register.css';
+        
+        res.render('register', {
+            ttl: title,
+            sty: style
+        });
+    }
+
+    else
+    {
+
+         // SEND EMAIL
+        
+        // API KEY ID:  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
+        const nodemailer = require('nodemailer');
+        const sgTransport = require('nodemailer-sendgrid-transport');
+
+        const options = {
+            auth: {
+                api_key: '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'
+            }
+        }
+
+        const mailer = nodemailer.createTransport(sgTransport(options)); // object that will send email
+         
+        const email = {
+            to: [`${req.body.eml}`],
+            from: 'suhaibayub123@hotmail.com',
+            subject: 'Email has been verified!',
+            text: '',
+            html: `<p>Hi ${req.body.usr},
+            <br><br>
+            Welcome to Airbnb! In order to get started, you need to confirm your email address.
+            <br><br>
+            <a href="https://airbnb-web.herokuapp.com/"><button>Confirm Email</button></a>
+            <br><br>
+            Thanks,
+            The Airbnb Team</p>`
+        };
+         
+        mailer.sendMail(email, (err, res) => {
+            if (err) { 
+                console.log(err) 
+            }
+            console.log(res);
+        });
+
+        res.redirect(`/send`);
+
+    }
+});
+
+
+// Adding new web page called send
+app.get('/send', (req, res) =>
+{
+    res.render(`send`);
+})
+
+
+
+
+
+
+
+
+
+
+// MONGODB TO HANDLE DATABASE INSERTION
+
+
+
+
+
+
+
 
 
 // Setting up server

@@ -34,7 +34,7 @@
 
 
 
-    <form>
+<form method="POST" action="/send">
 
    <h2 class="head2">Sign Up.</h2>
    <br><br>
@@ -43,27 +43,27 @@
 <div class="grid-time">
         <p>
             {{!-- <label for="">Username</label> --}}
-            <input type="text" placeholder="Username">
+            <input type="text" placeholder="Username" name="usr">
         </p>
 
         <p>
             {{!-- <label for="">Password</label> --}}
-            <input type="password" placeholder="New password">
+            <input type="password" placeholder="New password" name="pass">
         </p>
 
         <p>
             {{!-- <label for="">Home Address</label> --}}
-            <input type="text" placeholder="Home Address">
+            <input type="text" placeholder="Home Address" name="adrs">
         </p>
 
         <p>
             {{!-- <label for="">Phone Number</label> --}}
-            <input type="text" placeholder="Phone Number">
+            <input type="text" placeholder="Phone Number" name="pNum">
         </p>
 
         <p>
             {{!-- <label for="">Email</label> --}}
-            <input type="email" placeholder="Email">
+            <input type="email" placeholder="Email" name="eml">
         </p>
 
         {{!-- <p class="add"> --}}
@@ -72,7 +72,7 @@
 
         <p>Enter Birthday:</p>
 
-        <select name="" id="">
+        <select name="month" id="" required>
             <option value="">Month</option>
           <option value="">Jan</option>
           <option value="">Feb</option>
@@ -89,7 +89,7 @@
         </select>
 
 
-        <select name="" id="">
+        <select name="day" id="" required>
             <option value="">Day</option>
              <option value="">1</option>
           <option value="">2</option>
@@ -125,7 +125,7 @@
 
 
 
-        <select name="" id="">
+        <select name="year" id="" required>
             <option value="">Year</option>
             <option value="">2019</option>
             <option value="">2018</option>
@@ -156,9 +156,9 @@
 
 
         <p class="grid-area">
-            <a href="#"><button id="sign">Sign Up!</button></a>
+            <a href="#"><button id="sign" type="submit">Sign Up!</button></a>
         </p>
     </form>
 </div>
-</div>
+
 

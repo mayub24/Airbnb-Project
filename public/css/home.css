@@ -18,6 +18,11 @@
     justify-content: center;
 }
 
+li:hover
+{
+    color: black;
+}
+
 .title
 {
     font-size: 4em;
@@ -148,8 +153,8 @@ i#web:hover
 
 .form input, .book form select
 {
-    width: 100%;
-    padding: 6px;
+    width: 322px;
+    padding: 10px;
 }
 
 .book p 
@@ -181,6 +186,10 @@ i#web:hover
     margin: 1em;
 }
 
+.book form > p input
+{
+    width: 300px;
+}
 
 @media(min-width: 800px)
 {
@@ -205,13 +214,14 @@ i#web:hover
 
     video
     {
-        width: 70%;
-        height: 70%;
+        width: 40%;
+        height: 40%;
     }
 
 }
 
-@media(max-width: 800px)
+/* max-width: if it goes les than 800px */
+@media(max-width: 800px) 
 {
     .title > h1
     {
@@ -249,6 +259,13 @@ i#web:hover
     {
         font-size: 1.5em;
     }
+
+    video
+    {
+        width: 70%;
+        height: 70%;
+    }
+
 
 
 }
