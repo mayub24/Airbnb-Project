@@ -1,13 +1,12 @@
-// let logo = document.querySelector(`#log`);
-// let listz = document.querySelector(`.chng`);
 
 
-// logo.addEventListener(`click`, () =>
-// {
-//     document.querySelector(`.inp`).style.display = 'block';
-//     document.querySelector(`.srch`).style.display = 'block';
+setInterval(function()
+{ 
+    const errors = document.querySelectorAll('.errz');
 
-//     logo.style.display = 'none';
+    errors.forEach((val) =>
+    {
+        val.style.display = 'none';
+    })
 
-//     listz.style.padding = '20px';
-// })
+}, 3000);

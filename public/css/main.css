@@ -53,7 +53,7 @@ form > .inp, .btn
 
 footer
 {
-    bottom: 0;
+    bottom: 0%;
     text-align: center;
     font-weight: bold;
     background-color: white;
@@ -219,6 +219,14 @@ a:hover
     cursor: pointer;
     background-color: lightpink;
     transition: all 0.5s ease-in-out;
+}
+
+
+#head-1
+{
+    padding: 50px;
+    margin: 100px 0px;
+    text-align: center;
 }
 
 

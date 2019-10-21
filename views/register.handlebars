@@ -36,6 +36,14 @@
 
 <form method="POST" action="/send">
 
+    {{#each err}}
+
+    <div class="errz">
+        {{this}}
+    </div>
+
+    {{/each}}
+
    <h2 class="head2">Sign Up.</h2>
    <br><br>
         <h4>Its fast and breezy. Just like our service.</h4>

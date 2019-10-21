@@ -149,6 +149,20 @@ span#bold
 }
 
 
+.errz
+{
+    background-color: lightpink;
+    color: red;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0.5em;
+    margin: 10px 0px;
+    font-weight: bold;
+    width: 50%;
+    margin-left: 5em;
+}
+
 @media(max-width:800px)
 {
     *
@@ -190,6 +204,20 @@ span#bold
     {
         display: block;
         max-width: 100%;
+    }
+
+    
+    .errz
+    {
+        background-color: lightpink;
+        color: red;
+        border: 1px solid black;
+        border-radius: 10px;
+        text-align: center;
+        padding: 0.5em;
+        margin: 10px 0px;
+        font-weight: bold;
+        width: 100%;
     }
 
 }

@@ -74,27 +74,27 @@ app.post('/send', (req, res) =>
 
     if(req.body.usr == "")
     {
-        errors.push('Please enter a name');
+        errors.push('Please enter a username.');
     }
 
     if(req.body.pass == "")
     {
-        errors.push('Please enter a password');
+        errors.push('Please enter a password.');
     }
 
     if(req.body.adrs == "")
     {
-        errors.push('Please enter an address')
+        errors.push('Please enter a home address.')
     }
 
     if(req.body.pNum == "")
     {
-        errors.push('Please enter a number');
+        errors.push('Please enter a phone number.');
     }
 
     if(req.body.eml == "")
     {
-        errors.push('Please enter an email');
+        errors.push('Please enter an email.');
     }
 
 
@@ -106,7 +106,8 @@ app.post('/send', (req, res) =>
         
         res.render('register', {
             ttl: title,
-            sty: style
+            sty: style,
+            err: errors
         });
     }
 
@@ -129,17 +130,20 @@ app.post('/send', (req, res) =>
          
         const email = {
             to: [`${req.body.eml}`],
-            from: 'suhaibayub123@hotmail.com',
+            from: 'airbnb@hotmail.com',
             subject: 'Email has been verified!',
             text: '',
-            html: `<p>Hi ${req.body.usr},
+            html: `
+            <img src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c513.png" width="50px" height="20px">
+            <br>
+            <p>Hi ${req.body.usr},
             <br><br>
-            Welcome to Airbnb! In order to get started, you need to confirm your email address.
+            Welcome to Airbnb! In order to get started, you need to confirm your email address!
             <br><br>
-            <a href="https://airbnb-web.herokuapp.com/"><button>Confirm Email</button></a>
+            <a href="https://airbnb-web.herokuapp.com/"><button style="background-color: #ff5a5f; padding: 10px; color: white; border: none; border-radius: 6px; ">Confirm Email</button></a>
             <br><br>
             Thanks,
-            The Airbnb Team</p>`
+            The TD Team</p>`
         };
          
         mailer.sendMail(email, (err, res) => {
@@ -148,6 +152,10 @@ app.post('/send', (req, res) =>
             }
             console.log(res);
         });
+
+
+        // ADD DATABASE STUFF
+
 
         res.redirect(`/send`);
 
