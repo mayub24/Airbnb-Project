@@ -73,7 +73,7 @@ button
     transition: 1s all ease-in-out;
 }
 
-.container
+.low
 {
     display: grid;
     grid-template-columns: repeat(4,1fr);
@@ -172,13 +172,6 @@ i#foot:hover
 }
 
 
-
-a:hover
-{
-    color: black;
-}
-
-
 .search-hotel
 {
     display: none;
@@ -221,12 +214,32 @@ a:hover
     transition: all 0.5s ease-in-out;
 }
 
+.list a:hover
+{
+    color: black;
+    cursor: pointer;
+}
 
 #head-1
 {
     padding: 50px;
     margin: 100px 0px;
     text-align: center;
+}
+
+footer > div li:hover
+{
+    color: black;
+    border-bottom: 3px solid black;
+    padding-bottom: 7px;
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+
+
+i#plus1, i#plus2, i#plus3
+{
+    display: none;
 }
 
 
@@ -236,6 +249,21 @@ a:hover
     *
     {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    i#plus1, i#plus2, i#plus3
+    {
+        display: block;
+    }
+
+    i#foot
+    {
+        padding: 20px;
+    }
+
+    #plus:hover
+    {
+        cursor: pointer;
     }
     
     
@@ -286,6 +314,62 @@ a:hover
     {
         display: none;
     }
+
+
+    .low
+    {
+        display: grid;
+        grid-template-columns: repeat(1,1fr);
+        width: 80%;
+        padding: 0px 15px 0px 15px;
+        margin: 0 auto;
+    }
+
+
+    .top-space
+    {
+        display: none;
+    }
+
+    .middle-space
+    {
+        display: none;
+    }
+
+    .bottom-space
+    {
+        display: none;
+    }
+
+    .last-space li
+    {
+        display: none;
+    }
+
+
+
+    div > i#plus1, i#plus2, i#plus3
+    {
+        float: right;
+        margin-top: -20px;
+    }
+
+    #plus1:hover, #plus2:hover, #plus3:hover
+    {
+        cursor: pointer;
+    }
+
+    .square
+    {
+        border: 2px solid black;
+        padding: 6px;
+    }
+
+    .show
+    {
+        display: block;
+    }
+
 
 }
 

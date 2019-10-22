@@ -4,7 +4,8 @@ const handle = require('express-handlebars');
 // Adding nodemailer/body-parser
 const bodyParser = require(`body-parser`);
 // Adding mongoose/mongodb
-
+const mongoose = require('mongoose');
+// const mongodb = require('mongodb');
 
 
 const app = express();
@@ -16,6 +17,17 @@ app.use(express.static('public'));
 // Tells express to parse all submitted form data into the body of the request object
 app.use(bodyParser.urlencoded({ extended: false }));
 
+
+// CONNECT MONGOOSE ODM TO MONGODB
+mongoose.connect('mongodb+srv://user_1:12345@cluster0-o4izp.mongodb.net/test?retryWrites=true&w=majority', {useNewUrlParser: true})
+.then(() =>
+{
+    console.log(`Connection Successful!`);
+})
+.catch((err) =>
+{
+    console.log(`Error occured: ${err}`);
+});
 
 
 // Specifiying handlebar stuff
@@ -155,7 +167,65 @@ app.post('/send', (req, res) =>
 
 
         // ADD DATABASE STUFF
+        // CREATE SCHEMA
+        const Schema = mongoose.Schema;
 
+        const userSchema = new Schema({
+            usr: 
+            {
+                type: String,
+                required: true
+            },
+            pass: 
+            {
+                type: String,
+                required: true
+            },
+            adrs: 
+            {
+                type: String,
+                required: true
+            },
+            pNum: 
+            {
+                type: String,
+                required: true
+            },
+            eml: 
+            {
+                type: String,
+                required: true
+            }
+        });
+
+        
+        // CREATE MODEL
+        const User = mongoose.model('users', userSchema);
+       
+        
+        // Creating formData that will hold user information
+        const userData = 
+        {
+            usr: req.body.usr,
+            pass: req.body.pass,
+            adrs: req.body.adrs,
+            pNum: req.body.pNum,
+            eml: req.body.eml
+        }
+
+        // INSTANTIATE MODEL
+        const newUser = new User(userData);
+
+        newUser
+        .save()
+        .then(() =>
+        {
+            console.log('Document created');
+        })
+        .catch((err) =>
+        {
+            console.log(`Something went wrong -> ${err}`);
+        })
 
         res.redirect(`/send`);
 
