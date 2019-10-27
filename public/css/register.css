@@ -163,6 +163,31 @@ span#bold
     margin-left: 5em;
 }
 
+#userName
+{
+    margin-bottom: -10px;
+}
+
+p ~ p
+{
+    margin: -5px 0px;
+}
+
+#err
+{
+    margin: -15px 0px;
+}
+
+.ad-err, .desc, .passwrd, .desc-num, .desc-eml
+{
+    display: none;
+}
+
+.about-us p:nth-child(3)
+{
+    margin-top: 50px;
+}
+
 @media(max-width:800px)
 {
     *
