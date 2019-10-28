@@ -225,10 +225,16 @@ p ~ p
         grid-template-columns: 100%;
     }
 
+
     .contact form .grid-time
     {
         display: block;
-        max-width: 100%;
+        max-width: 90%;
+    }
+
+    #sign
+    {
+        margin-top: 1em;
     }
 
     
