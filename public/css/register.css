@@ -18,6 +18,12 @@ body
     margin-top: -22px;
 }
 
+#sign
+{
+    margin-top: 2em;
+}
+
+
 .about-airbnb
 {
     margin-top: 2.5em;
@@ -249,6 +255,13 @@ p ~ p
         margin: 10px 0px;
         font-weight: bold;
         width: 100%;
+    }
+
+    .head2
+    {
+        margin-top: 0.6em;
+        font-size: 2em;
+        margin-bottom: -1.4em;
     }
 
 }

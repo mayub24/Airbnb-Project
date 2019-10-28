@@ -84,27 +84,42 @@ app.post('/send', (req, res) =>
 
     console.log(req.body);
 
-    if(req.body.usr == "")
+    // Name error handling
+    let nameReg = /^[A-Za-z0-9]{2,25}$/;
+
+    if(!nameReg.test(req.body.usr))
     {
-        errors.push('Please enter a username.');
+        errors.push(`User is incorrect!`);
     }
 
-    if(req.body.pass == "")
+    // Password error handling
+    let passReg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*<>?]).{8,16}$/;
+
+    if(!passReg.test(req.body.pass))
     {
         errors.push('Please enter a password.');
     }
 
-    if(req.body.adrs == "")
+    const adrsReg = /^([0-9]+)[ ]([A-Za-z0-9\.\# ].{4,30})$/;
+
+
+    if(!adrsReg.test(req.body.adrs))
     {
         errors.push('Please enter a home address.')
     }
 
-    if(req.body.pNum == "")
+    // Phone error handling
+    const numReg = /^\(?\d{3}\)?[-.]?\d{3}[-.]?\d{4}$/; 
+
+    if(!numReg.test(req.body.pNum))
     {
         errors.push('Please enter a phone number.');
     }
 
-    if(req.body.eml == "")
+    // Email error handling
+    const emailReg = /^([A-Za-z0-9_\-\.]+)@([A-Za-z0-9_\-\.]+)\.([a-z]{2,5})$/;
+    
+    if(!emailReg.test(req.body.eml))
     {
         errors.push('Please enter an email.');
     }

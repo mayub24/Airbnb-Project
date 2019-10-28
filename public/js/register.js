@@ -52,7 +52,7 @@ function checkName() // 1. Username
 function checkPass() // 2. Password
 {
     const pass = document.querySelector(`#pass`);
-    const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*<>?])[\w\d\W].{8,16}/;
+    const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*<>?])[\w\d\W].{8,16}$/;
 
     if(!reg.test(pass.value))
     {
@@ -70,7 +70,7 @@ function checkPass() // 2. Password
 function checkAddress() // 3. Address
 {
     const addres = document.querySelector(`#adrs`);
-    const reg = /^([0-9]+)[ ]([A-Za-z0-9\.\# ].{4,30})/;
+    const reg = /^([0-9]+)[ ]([A-Za-z0-9\.\# ].{4,30})$/;
 
     if(!reg.test(addres.value))
     {

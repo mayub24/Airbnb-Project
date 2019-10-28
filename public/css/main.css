@@ -242,6 +242,16 @@ i#plus1, i#plus2, i#plus3
     display: none;
 }
 
+#minus1, #minus3, #minus2
+{
+    display: none;
+}
+
+#minus1:hover, #minus3:hover, #minus2:hover
+{
+    cursor: pointer;
+}
+
 
 @media(max-width: 800px) 
 {
@@ -347,8 +357,13 @@ i#plus1, i#plus2, i#plus3
     }
 
 
-
     div > i#plus1, i#plus2, i#plus3
+    {
+        float: right;
+        margin-top: -20px;
+    }
+
+    #minus1, #minus2, #minus3
     {
         float: right;
         margin-top: -20px;
