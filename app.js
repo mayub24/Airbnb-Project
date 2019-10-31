@@ -84,6 +84,7 @@ app.post('/send', (req, res) =>
 
     console.log(req.body);
 
+
     // Name error handling
     let nameReg = /^[A-Za-z0-9]{2,25}$/;
 
@@ -124,18 +125,16 @@ app.post('/send', (req, res) =>
         errors.push('Please enter a valid email with an @ and a valid domain!');
     }
 
-    if(!req.body.yer <= 2000)
-    {
-        errors.push('You must be 19 years of age to sign up!');
-    }
-
-
     // Checking for errors
     if(errors.length > 0)
     {
         const title = 'Airbnb | Register';
         const style = 'register.css';
+
+        console.log(errors);
         
+        req.body.usr !== "";
+
         res.render('register', {
             ttl: title,
             sty: style,
@@ -166,7 +165,7 @@ app.post('/send', (req, res) =>
             subject: 'Email has been verified!',
             text: '',
             html: `
-            <img src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c513.png" width="50px" height="20px">
+            <img src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c513.png" width="90px" height="40px">
             <br>
             <p>Hi ${req.body.usr},
             <br><br>
@@ -256,7 +255,14 @@ app.post('/send', (req, res) =>
 // Adding new web page called send
 app.get('/send', (req, res) =>
 {
-    res.render(`send`);
+    const title = 'Airbnb | Dashboard';
+    const style = 'send.css';
+
+    res.render(`send`, 
+    {
+        ttl: title,
+        sty: style
+    });
 })
 
 

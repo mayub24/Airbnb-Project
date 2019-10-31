@@ -187,6 +187,7 @@ p ~ p
 .ad-err, .desc, .passwrd, .desc-num, .desc-eml
 {
     display: none;
+    color: red;
 }
 
 .about-us p:nth-child(3)
