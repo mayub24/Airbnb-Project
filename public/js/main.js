@@ -8,7 +8,7 @@ setInterval(function()
         val.style.display = 'none';
     })
 
-}, 6000);
+}, 8000);
 
 
 // Clicking plus icon and showing lists

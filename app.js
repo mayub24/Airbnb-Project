@@ -124,6 +124,11 @@ app.post('/send', (req, res) =>
         errors.push('Please enter an email.');
     }
 
+    if(!req.body.yer <= 2000)
+    {
+        errors.push('You must be 19 years of age to sign up!');
+    }
+
 
     // Checking for errors
     if(errors.length > 0)
