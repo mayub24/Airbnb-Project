@@ -89,7 +89,7 @@ app.post('/send', (req, res) =>
 
     if(!nameReg.test(req.body.usr))
     {
-        errors.push(`User is incorrect!`);
+        errors.push(`Username should be between 2 and 25 letters/numbers.`);
     }
 
     // Password error handling
@@ -97,7 +97,7 @@ app.post('/send', (req, res) =>
 
     if(!passReg.test(req.body.pass))
     {
-        errors.push('Please enter a password.');
+        errors.push('Password must start with a capital letter, have a number and symbol, and must be between 8 and 16 characters.');
     }
 
     const adrsReg = /^([0-9]+)[ ]([A-Za-z0-9\.\# ].{4,30})$/;
@@ -105,7 +105,7 @@ app.post('/send', (req, res) =>
 
     if(!adrsReg.test(req.body.adrs))
     {
-        errors.push('Please enter a home address.')
+        errors.push('Please enter a valid home address.')
     }
 
     // Phone error handling
@@ -113,7 +113,7 @@ app.post('/send', (req, res) =>
 
     if(!numReg.test(req.body.pNum))
     {
-        errors.push('Please enter a phone number.');
+        errors.push('Phone number MUST be 10 digits!');
     }
 
     // Email error handling
@@ -121,7 +121,7 @@ app.post('/send', (req, res) =>
     
     if(!emailReg.test(req.body.eml))
     {
-        errors.push('Please enter an email.');
+        errors.push('Please enter a valid email with an @ and a valid domain!');
     }
 
     if(!req.body.yer <= 2000)
@@ -175,7 +175,7 @@ app.post('/send', (req, res) =>
             <a href="https://airbnb-web.herokuapp.com/"><button style="background-color: #ff5a5f; padding: 10px; color: white; border: none; border-radius: 6px; ">Confirm Email</button></a>
             <br><br>
             Thanks,
-            The TD Team</p>`
+            The Airbnb Team</p>`
         };
          
         mailer.sendMail(email, (err, res) => {
