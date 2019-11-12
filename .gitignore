@@ -1,4 +1,5 @@
 node_modules
-
+/config/keys.env
+/config/key.js
 # css/ means exclude all css files
 # js/ means exclude all js files
