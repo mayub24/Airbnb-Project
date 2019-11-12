@@ -82,6 +82,29 @@ h1
     display: block;
 }
 
+#newRm
+{
+    padding: 0.5em;
+    margin: 0 auto;
+    display: flex;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 2em;
+}
+
+#room-link
+{
+    text-decoration: none;
+}
+
+#newRm:hover
+{
+    cursor: pointer;
+    background-color: #ff5a5f;
+    color: white;
+    transition: all 0.4s ease-in-out;
+}
 
 
 @media(max-width: 800px)

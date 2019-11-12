@@ -29,6 +29,7 @@ document.querySelector(`#pass`).addEventListener(`blur`, checkPass);
 document.querySelector(`#adrs`).addEventListener(`blur`, checkAddress);
 document.querySelector(`#num`).addEventListener(`blur`, checkPhone);
 document.querySelector(`#mail`).addEventListener(`blur`, checkEmail);
+document.querySelector(`#cpass`).addEventListener(`blur`, confirmPass);
 
 function checkName() // 1. Username
 {
@@ -65,6 +66,24 @@ function checkPass() // 2. Password
         pass.style.border = `2px solid lightgreen`;
     }
 }
+
+function confirmPass() // 2. Password
+{
+    const pass = document.querySelector(`#cpass`);
+    const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*<>?])[\w\d\W].{8,16}$/;
+
+    if(!reg.test(pass.value))
+    {
+        pass.style.border = `2px solid red`;
+        document.querySelector(`.c-passwrd`).style.display = `block`;
+    }
+    else
+    {
+        document.querySelector(`.c-passwrd`).style.display = `none`;
+        pass.style.border = `2px solid lightgreen`;
+    }
+}
+
 
 
 function checkAddress() // 3. Address

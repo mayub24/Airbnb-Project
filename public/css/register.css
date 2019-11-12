@@ -184,7 +184,7 @@ p ~ p
     margin: -15px 0px;
 }
 
-.ad-err, .desc, .passwrd, .desc-num, .desc-eml
+.ad-err, .desc, .passwrd, .desc-num, .desc-eml, .c-passwrd
 {
     display: none;
     color: red;
@@ -266,7 +266,7 @@ p ~ p
         margin-bottom: -1.4em;
     }
 
-    .ad-err, .desc, .passwrd, .desc-num, .desc-eml
+    .ad-err, .desc, .passwrd, .desc-num, .desc-eml, .c-passwrd
     {
         width: 90%;
         text-align: left;

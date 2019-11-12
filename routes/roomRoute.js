@@ -20,5 +20,23 @@ router.get('/room', (req, res) =>
 })
 
 
+router.get('/newRoom', (req, res) =>
+{
+    const title = 'Add New Room | Airbnb';
+    const style = 'newRoom.css';
+
+    res.render('rooms/addRoom',
+    {
+        ttl: title,
+        sty: style
+    });
+});
+
+
+router.post('/newRoom', (req, res) =>
+{
+    res.render('rooms/addRoom');
+});
+
 
 module.exports = router;
