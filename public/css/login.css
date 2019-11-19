@@ -45,3 +45,17 @@ h1
 {
     margin-bottom: 2em;
 }
+
+.errz
+{
+        background-color: lightpink;
+        color: red;
+        border: 1px solid black;
+        border-radius: 10px;
+        text-align: center;
+        padding: 0.5em;
+        margin: 10px auto;
+        font-weight: bold;
+        /* width: 80%;
+        margin-left: 20px; */
+}

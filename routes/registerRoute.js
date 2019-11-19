@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 // Getting model from model file
 const model = require('../models/userModel');
+const bcrypt = require('bcryptjs');
 
 router.get('/register', (req, res) =>
 {
@@ -188,10 +189,63 @@ router.get('/login', (req, res) =>
 // Posting login
 router.post('/login', (req, res) =>
 {
+    const title = 'Airbnb | Login';
+    const style = 'login.css';
+    const error = [];
+
+    // Getting username and password
+    const userData = 
+    {
+        usr: req.body.usr,
+        pass: req.body.pass
+    }
+
     // Pulling data , checking if username is null
     // if username is null, then generate error and render same page
     // else compare using bcrypt compare the pass and create session and rdirect
+    model.findOne({usr: req.body.usr})
+    .then((user) =>
+    {
+        if(user == null)
+        {
+            error.push('Sorry, no username found.');
+            res.render('registration/login',
+            {
+                err: error,
+                ttl: title,
+                sty: style
+            })
+        }
+        else
+        {
+            bcrypt.compare(userData.pass, user.pass)
+            .then((equal) =>
+            {
+                if(equal)
+                {
+                    // Create a session
+                    req.session.userLogin = user;
 
+                    // redirect to homepage
+                    res.redirect('/');
+                }
+                else
+                {
+                    // Create error
+                    error.push('Passwords do not match');
+
+
+                    // render same page
+                    res.render('registration/login',
+                    {
+                        err: error,
+                        ttl: title,
+                        sty: style
+                    })
+                }
+            })
+        }
+    })
 })
 
 

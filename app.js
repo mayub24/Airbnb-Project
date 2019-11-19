@@ -7,6 +7,8 @@ const bodyParser = require(`body-parser`);
 const mongoose = require('mongoose');
 // const getKey = require(`./config/key`);
 const methodOverride = require('method-override');
+// Express session
+const session = require('express-session');
 
 
 // Getting dotenv
@@ -19,6 +21,20 @@ const roomRoute = require('./routes/roomRoute');
 
 
 const app = express();
+
+// Connecting session to express
+app.use(session({ secret: 'This is a secret!'}));
+
+
+// Creating a middleware that will be accessible to all express files
+app.use((req, res, next) =>
+{
+    // Using locals to get the session name
+    res.locals.user = req.session.userLogin;
+
+    next();
+})
+
 
 // Providing static files
 app.use(express.static('public'));
