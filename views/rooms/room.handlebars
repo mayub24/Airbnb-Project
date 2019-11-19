@@ -1,4 +1,4 @@
-    <h1 class="high1">Search for Rooms Using Searchbox Above!</h1>
+    {{!-- <h1 class="high1">Search for Rooms Using Searchbox Above!</h1>
 
     <a href="newRoom" id="room-link"><button id="newRm">Add a New Room</button></a>
 
@@ -15,6 +15,8 @@
                     <p class="item-name">{{{icon}}}Sheridon Hotel</p>
                     <p>{{{icon2}}}130 CAD/night</p>
                     <p>{{{icon3}}}California</p>
+                    <a href="">Edit</a>
+                    <a href="">Delete</a>
                 </div>
             </div>
 
@@ -199,4 +201,56 @@
 
 </div>
 
-<script src="js/room.js"></script>
+<script src="js/room.js"></script> --}}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <a href="newRoom" id="room-link"><button id="newRm">Add a New Room</button></a>
+
+
+<div class="box">
+ {{#each roomInfo}}
+    <div class="imgz">
+
+            <!-- ITEMS [EACH ITEM WILL HAVE A SEPERATE DIV] -->
+            <!-- Item 1 -->
+
+            <div class="item-1 htl">
+                {{!-- Making the img a link so we get extra detail when we click on it --}}
+                <a href="/info/{{this._id}}"><img src="img/room/room1.jpg" alt=""></a>
+
+                <div class="txt1">
+                    <a href="/info/{{this._id}}">Show info</a>
+                    <p class="item-name">{{this.name}}</p>
+                    <p>{{this.price}}</p>
+                    <p>{{this.location}}</p>
+                    <p>{{this.floors}}</p>
+                    <p>{{this.bathrooms}}</p>
+                    <a href="/edit/{{this._id}}" id="edit-link"><button id="edit">Edit</button></a>
+                    <form action="/delete/{{this._id}}?_method=DELETE" method="post">
+                    <button type="submit" id="del">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+ {{/each}}
+</div>

@@ -1,0 +1,28 @@
+.list
+{
+    padding-top: 25px;
+}
+
+body
+{
+    text-align: center;
+    color: black;
+}
+
+p
+{
+    margin: px 0px;
+    text-align: center;
+    color: black;
+}
+
+table
+{
+    margin: 0 auto;
+}
+
+td:nth-child(2)
+{
+    padding: 2em;
+    font-weight: bold;
+}

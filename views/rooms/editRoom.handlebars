@@ -1,7 +1,7 @@
 {{!-- Form + Details of New Room that will be added --}}
-<h2 class="new-room-heading">Adding A New Room!</h2>
+<h2 class="new-room-heading">Editing Current Room!</h2>
 
-<form action="/newRoom" method="post">
+<form action="/edit/{{rooms._id}}?_method=PUT" method="post">
 
 <div class="newRoom">
 
@@ -24,50 +24,50 @@
 
     <div>
     <label for="">Name of Airbnb</label>
-    <input type="text" name="name" id="" placeholder="Party Lounge">
+    <input type="text" name="name" id="" placeholder="Party Lounge" value="{{rooms.name}}">
     <br>
     </div>
 
 <div>
     <label for="">Location</label>
-    <input type="text" name="location" id="" placeholder="223 Dundas Street">
+    <input type="text" name="location" id="" placeholder="223 Dundas Street" value={{rooms.location}}>
     <br>
 </div>
 
 
 <div>
     <label for=""># of Rooms</label>
-    <input type="number" name="roomz" id="" placeholder="Ex. 5">
+    <input type="number" name="roomz" id="" placeholder="Ex. 5" value={{rooms.roomz}}>
     <br>
 </div>
 
 <div>
     <label for=""># of Beds</label>
-    <input type="number" name="bedz" id="" placeholder="Ex. 8">
+    <input type="number" name="bedz" id="" placeholder="Ex. 8" value={{rooms.bedz}}>
     <br>
 </div>
 
 <div>
     <label for=""># of Bathrooms</label>
-    <input type="number" name="bathrooms" id="" placeholder="Ex. 4">
+    <input type="number" name="bathrooms" id="" placeholder="Ex. 4" value={{rooms.bathrooms}}>
     <br>
 </div>
 
 <div>
     <label for=""># of Floors</label>
-    <input type="number" name="floors" id="" placeholder="Ex. 2">
+    <input type="number" name="floors" id="" placeholder="Ex. 2" value={{rooms.floors}}>
     <br>
 </div>
 
 <div>
     <label for="">Max # of Guests</label>
-    <input type="number" name="guests" id="" placeholder="Ex. 6">
+    <input type="number" name="guests" id="" placeholder="Ex. 6" value={{rooms.guests}}>
     <br>
 </div>
 
 <div>
     <label for="">Price</label>
-    <input type="number" name="price" id="" placeholder="$199">
+    <input type="number" name="price" id="" placeholder="$199" value={{rooms.price}}>
     <br>
 </div>
 
@@ -79,7 +79,7 @@
 </div> --}}
 
 <div class="grid-area">
-    <button type="submit">Add Room</button>
+    <button type="submit">Edit Room</button>
 </div>
 
 </div>

@@ -6,6 +6,8 @@ const bodyParser = require(`body-parser`);
 // Adding mongoose/mongodb
 const mongoose = require('mongoose');
 // const getKey = require(`./config/key`);
+const methodOverride = require('method-override');
+
 
 // Getting dotenv
 require("dotenv").config({path:'./config/keys.env'});
@@ -21,6 +23,11 @@ const app = express();
 // Providing static files
 app.use(express.static('public'));
 
+
+// Method override with express
+app.use(methodOverride('_method'));
+
+
 // Body parser middleware
 // Tells express to parse all submitted form data into the body of the request object
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -30,6 +37,11 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use('/', homeRoute);
 app.use('/', userRoute);
 app.use('/', roomRoute);
+
+
+// Specifiying handlebar stuff
+app.engine('handlebars', handle());
+app.set('view engine', 'handlebars');
 
 
 // Using environment variables in our MONGO DB URL
@@ -47,10 +59,6 @@ mongoose.connect(MONGO_DB_URL, {useNewUrlParser: true})
     console.log(`Error occured: ${err}`);
 });
 
-
-// Specifiying handlebar stuff
-app.engine('handlebars', handle());
-app.set('view engine', 'handlebars');
 
 
 // Setting up server

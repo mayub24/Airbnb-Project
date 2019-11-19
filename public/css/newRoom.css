@@ -13,15 +13,15 @@ body
 {
     /* Add a background-image */
     position: absolute;
-    background: url(../img/air.png);
+    background-image: url('https://cache.desktopnexus.com/thumbseg/2465/2465472-bigthumbnail.jpg');
     background-position: center;
-    background-size: 100px;
+    background-size: 120px; /* specifies size of background image [cover will make image MAD LARGE!] */
     background-repeat: repeat;
     width: 100%;
-    height: 950px;
+    /* height: 790px;
     z-index: -1;
-    opacity: 0.72;
-    margin-top: -5.5em;
+    opacity: 0.20; */
+    margin-top: -6em;
 }
 
 footer

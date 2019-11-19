@@ -32,13 +32,8 @@ h1
 
 
 .htl:hover {
-    transform: scale(1.1); 
-    transition: all 0.7s ease;
     cursor: pointer;
     transition: all 1s ease-in-out;
-    margin-bottom: 16px;
-    margin-top: 10px;
-    margin-right: 5px;
   }
 
   .box > div
@@ -85,7 +80,7 @@ h1
 #newRm
 {
     padding: 0.5em;
-    margin: 0 auto;
+    margin: 2.5em auto;
     display: flex;
     border-radius: 4px;
     font-weight: bold;
@@ -105,6 +100,33 @@ h1
     color: white;
     transition: all 0.4s ease-in-out;
 }
+
+/* button#btn
+{
+    width: 80%;
+    padding: 2px;
+    margin: 10px auto;
+} */
+
+#del
+{
+    width: 100%;
+    padding: 0.3em;
+}
+
+#edit
+{
+    width: 92%;
+    margin-left: 8px;
+    padding: 0.3em;
+}
+
+
+form
+{
+    padding: 0.5em;
+}
+
 
 
 @media(max-width: 800px)

@@ -1,4 +1,6 @@
-        
+
+
+
 <div class="contact">
 
 <div class="about-airbnb">
@@ -51,37 +53,37 @@
 <div class="grid-time">
         <p>
             {{!-- <label for="">Username</label> --}}
-            <input type="text" placeholder="Username" name="usr" id="userName">
+            <input type="text" placeholder="Username" name="usr" id="userName" value={{name}}>
             <p class="desc" id="err">*Must be between 2 and 25 letters/numbers*</p>
         </p>
 
         <p>
             {{!-- <label for="">Password</label> --}}
-            <input type="password" placeholder="New password" name="pass" id="pass">
+            <input type="password" placeholder="New password" name="pass" id="pass" value={{pass}}>
             <p class="passwrd" id="err">*Must start with a capital, have atleast 1 number and symbol and must be between 8 to 16 characters*</p>
         </p>
 
           <p>
             {{!-- <label for="">Password</label> --}}
-            <input type="password" placeholder="Confirm Password" name="c-pass" id="cpass">
+            <input type="password" placeholder="Confirm Password" name="cpass" id="cpass" value={{pass}}>
             <p class="c-passwrd" id="c-err">*Must match above text*</p>
         </p>
 
         <p>
             {{!-- <label for="">Home Address</label> --}}
-            <input type="text" placeholder="Home Address" name="adrs" id="adrs">
+            <input type="text" placeholder="Home Address" name="adrs" id="adrs" value={{adrs}}> 
             <p class="ad-err" id="err">*Incorrect address*</p>
         </p>
 
         <p>
             {{!-- <label for="">Phone Number</label> --}}
-            <input type="text" placeholder="Phone Number" name="pNum" id="num">
+            <input type="text" placeholder="Phone Number" name="pNum" id="num" value={{pNum}}>
             <p class="desc-num" id="err">*Must include 10 digits*</p>
         </p>
 
         <p>
             {{!-- <label for="">Email</label> --}}
-            <input type="text" placeholder="Email" name="eml" id="mail">
+            <input type="text" placeholder="Email" name="eml" id="mail" value={{eml}}>
             <p class="desc-eml" id="err">*Must include an @ and a valid domain*</p>
         </p>
 

@@ -83,7 +83,12 @@ router.post('/send', (req, res) =>
         res.render('registration/register', {
             ttl: title,
             sty: style,
-            err: errors
+            err: errors,
+            name: userData.usr,
+            pass: userData.pass,
+            adrs: userData.adrs,
+            pNum: userData.pNum,
+            eml: userData.eml
         });
     }
 
@@ -162,6 +167,30 @@ router.get('/send', (req, res) =>
         ttl: title,
         sty: style
     });
+})
+
+
+// Getting login
+router.get('/login', (req, res) =>
+{
+    const title = 'Airbnb | Login';
+    const style = 'login.css';
+
+    res.render(`registration/login`, 
+    {
+        ttl: title,
+        sty: style
+    });
+})
+
+
+
+// Posting login
+router.post('/login', (req, res) =>
+{
+    // Pulling data , checking if username is null
+    // if username is null, then generate error and render same page
+    // else compare using bcrypt compare the pass and create session and rdirect
 })
 
 
