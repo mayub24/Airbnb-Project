@@ -24,13 +24,19 @@
         <input type="text" class="inp" placeholder="Search hotels...">
         <button class="search-hotel">Search!</button>
          
-         <p id="user-logged">Welcome {{user.usr}}!</p>
+        {{#if user}} 
+         <p id="user-logged">Welcome to Airbnb {{user.usr}}!</p>
+        {{/if}}
 
     <ul class="chng">
         <li><a href="/">Home</a></li>
         <li><a href="room">Rooms</a></li>
+        {{#if user}}
+        <li><a href="logout">Logout</a></li>
+        {{else}}
         <li><a href="register">Sign Up</a></li>
         <li><a href="login">Login</a></li>
+        {{/if}}
     </ul>
 
 

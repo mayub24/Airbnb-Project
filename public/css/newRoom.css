@@ -95,6 +95,11 @@ input
     border: 1px solid black;
 }
 
+#user-logged
+{
+    display: none;
+}
+
 @media(max-width: 800px)
 {
     .newRoom

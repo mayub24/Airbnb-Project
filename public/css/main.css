@@ -252,6 +252,12 @@ i#plus1, i#plus2, i#plus3
     cursor: pointer;
 }
 
+#user-logged
+{
+    font-weight: bold;
+    font-size: 2em;
+}
+
 
 @media(max-width: 800px) 
 {
@@ -275,7 +281,11 @@ i#plus1, i#plus2, i#plus3
     {
         cursor: pointer;
     }
-    
+
+    #user-logged
+    {
+        display: none;
+    }
     
     .list > i
     {

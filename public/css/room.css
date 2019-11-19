@@ -127,6 +127,11 @@ form
     padding: 0.5em;
 }
 
+#user-logged
+{
+    display: none;
+}
+
 
 
 @media(max-width: 800px)
