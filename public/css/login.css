@@ -1,0 +1,47 @@
+.whole-page
+{
+    margin: 50px auto;
+    border: 2px solid black;
+    max-width: 40%;
+    padding: 2em;
+    border-radius: 30px;
+}
+
+h1
+{
+    text-align: center;
+    text-decoration: underline;
+}
+
+#log
+{
+    text-align: center;
+    margin-top: 2em;
+}
+
+#log-button
+{
+    margin-top: 2em;
+    width: 100%;
+    padding: 0.5em;
+    border-radius: 8px;
+}
+
+#log-button:hover
+{
+    background-color: gray;
+    color: white;
+    cursor: pointer;
+    transition: 0.5s all ease-in-out;
+}
+
+#user, #pass
+{
+    padding: 0.4em;
+    width: 100%;
+}
+
+#user
+{
+    margin-bottom: 2em;
+}

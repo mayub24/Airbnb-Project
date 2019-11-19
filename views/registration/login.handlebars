@@ -1,4 +1,6 @@
 {{!-- Login page for user --}}
+<div class="whole-page">
+
 <h1>User Login</h1>
 
 {{!-- {{#each err}}
@@ -7,18 +9,30 @@
 
 {{/each}} --}}
 
+    
+
+
 <form action="/user/login" method="post">
+
+<div id="log">
 
     <p>
         <label for="">Username</label>
-        <input type="text" placeholder="Username" name="usr">
+        <br>
+        <input type="text" placeholder="Username" name="usr" id="user">
     </p>
 
     <p>
         <label for="">Password</label>
-        <input type="password" placeholder="Password" name="pass">
+        <br>
+        <input type="password" placeholder="Password" name="pass" id="pass">
     </p>
 
-    <button type="submit">Login</button>
+    <button type="submit" id="log-button">Login</button>
+
+</div>
 
 </form>
+
+
+</div>

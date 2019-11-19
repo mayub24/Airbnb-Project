@@ -142,13 +142,13 @@ router.post('/send', (req, res) =>
         .then(() =>
         {
             console.log('Document created');
+            res.redirect(`/login`);
         })
         .catch((err) =>
         {
             console.log(`Something went wrong -> ${err}`);
         })
 
-        res.redirect(`/send`);
 
     }
 });
@@ -191,6 +191,7 @@ router.post('/login', (req, res) =>
     // Pulling data , checking if username is null
     // if username is null, then generate error and render same page
     // else compare using bcrypt compare the pass and create session and rdirect
+
 })
 
 
