@@ -61,7 +61,7 @@ app.set('view engine', 'handlebars');
 
 
 // Using environment variables in our MONGO DB URL
-const MONGO_DB_URL = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASS}@cluster0-o4izp.mongodb.net/${process.env.MONGO_DB_NAME}?retryWrites=true&w=majority`;
+const MONGO_DB_URL = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASS}@cluster0-o4izp.mongodb.net/${process.env.COLLECTION_NAME}?retryWrites=true&w=majority`;
 
 
 // CONNECT MONGOOSE ODM TO MONGODB
