@@ -9,6 +9,8 @@ const mongoose = require('mongoose');
 const methodOverride = require('method-override');
 // Express session
 const session = require('express-session');
+// File upload
+const fileUpload = require('express-fileupload');
 
 
 // Getting dotenv
@@ -25,6 +27,20 @@ const app = express();
 // Connecting session to express
 app.use(session({ secret: 'This is a secret!'}));
 
+// Providing static files
+app.use(express.static('public'));
+
+// Connecting file upload to express
+app.use(fileUpload());
+
+
+// Method override with express
+app.use(methodOverride('_method'));
+
+
+// Body parser middleware
+// Tells express to parse all submitted form data into the body of the request object
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Creating a middleware that will be accessible to all express files
 app.use((req, res, next) =>
@@ -36,17 +52,6 @@ app.use((req, res, next) =>
 })
 
 
-// Providing static files
-app.use(express.static('public'));
-
-
-// Method override with express
-app.use(methodOverride('_method'));
-
-
-// Body parser middleware
-// Tells express to parse all submitted form data into the body of the request object
-app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // establishing routes

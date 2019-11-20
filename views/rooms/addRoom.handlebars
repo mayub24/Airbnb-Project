@@ -1,7 +1,11 @@
 {{!-- Form + Details of New Room that will be added --}}
 <h2 class="new-room-heading">Adding A New Room!</h2>
 
-<form action="/newRoom" method="post">
+        {{#each err}}
+            {{this}}
+        {{/each}}
+
+<form action="/newRoom" method="post" enctype="multipart/form-data">
 
 <div class="newRoom">
 
@@ -21,6 +25,9 @@
     </div>
 
     <div class="right-side">
+
+
+
 
     <div>
     <label for="">Name of Airbnb</label>
@@ -72,11 +79,11 @@
 </div>
 
 
-{{!-- <div id="pix" class="grid-area">
+<div id="pix" class="grid-area">
     <label for="">Pictures</label>
-    <input type="file" name="" id="">
+    <input type="file" name="roomPic" id="pic">
     <br>
-</div> --}}
+</div>
 
 <div class="grid-area">
     <button type="submit">Add Room</button>

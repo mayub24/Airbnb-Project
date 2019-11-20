@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const roomModel = require('../models/roomModel');
+const path = require('path');
 
 
 router.get('/room', (req, res) =>
@@ -60,16 +61,34 @@ router.post('/newRoom', (req, res) =>
 
     const errors = [];
 
-    // if(roomData.name == "")
-    // {
+    // check validation
 
-    // }
+
+    // File errors
+    if(req.files == null)
+    {
+        errors.push('please select an image');
+    }
+    else
+    {
+        if(req.files.roomPic.mimetype.indexOf("image") == -1)
+        {
+            errors.push('not an image file bruh!');
+        }
+    }
 
     if(errors.length > 0)
     {
+        console.log(errors);
+
+        const title = 'Add New Room | Airbnb';
+        const style = 'newRoom.css';
+
         res.render('rooms/addRoom', 
         {
-            err: errors
+            err: errors,
+            ttl: title,
+            sty: style
         })
     }
     else
@@ -80,7 +99,24 @@ router.post('/newRoom', (req, res) =>
         rooms.save()
         .then(() =>
         {
-            res.redirect('/room');
+            req.files.roomPic.name = `pic_${rooms._id}_${path.parse(req.files.roomPic.name).ext}`;
+            // Moving file to a specific location where we will be able to pull from
+            req.files.roomPic.mv(`./public/img/${req.files.roomPic.name}`)
+            .then(() =>
+            {
+                rooms.roomPic = req.files.roomPic.name;
+                rooms.save()
+                .then(() =>
+                {
+                    console.log(`picture saved to database`)
+                    res.redirect('/room');
+                })
+            })
+            .catch((err) =>
+            {
+                console.log(`err in pulling pictures: ${err}`);
+            })
+
         })
         .catch((err) =>
         {

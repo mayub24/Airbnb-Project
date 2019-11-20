@@ -53,6 +53,10 @@ const roomSchema = new Schema
         {
             type: Date,
             default: Date.now()
+        },
+        roomPic:
+        {
+            type: String,
         }
     }
 )
