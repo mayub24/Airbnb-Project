@@ -223,27 +223,27 @@
 
 {{#if user}}
  <a href="newRoom" id="room-link"><button id="newRm">Add a New Room</button></a>
-{{/if}}
 
 
 <div class="box">
  {{#each roomInfo}}
+{{!-- {{#if user}} --}}
     <div class="imgz">
 
             <!-- ITEMS [EACH ITEM WILL HAVE A SEPERATE DIV] -->
             <!-- Item 1 -->
-
             <div class="item-1 htl">
                 {{!-- Making the img a link so we get extra detail when we click on it --}}
                 <a href="/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
 
                 <div class="txt1">
                     <a href="/info/{{this._id}}">Show info</a>
-                    <p class="item-name">{{this.name}}</p>
-                    <p>{{this.price}}</p>
-                    <p>{{this.location}}</p>
-                    <p>{{this.floors}}</p>
-                    <p>{{this.bathrooms}}</p>
+                    {{!-- <p class="item-name">Name: {{this.name}}</p> --}}
+                    {{!-- <p>Price: ${{this.price}}</p>
+                    <p>Address: {{this.location}}</p>
+                    <p># of Floors: {{this.floors}}</p>
+                    <p># of Bathrooms: {{this.bathrooms}}</p>
+                    <p>Max # of Guests: {{this.guests}}</p> --}}
                     <a href="/edit/{{this._id}}" id="edit-link"><button id="edit">Edit</button></a>
                     <form action="/delete/{{this._id}}?_method=DELETE" method="post">
                     <button type="submit" id="del">Delete</button>
@@ -251,12 +251,16 @@
                 </div>
             </div>
         </div>
-
+{{!-- {{/if}} --}}
  {{/each}}
 </div>
+{{/if}}
 
     {{#unless user}}
 
     <h3 id="bruh">Please sign up or login to add rooms!</h3>
 
     {{/unless}}
+
+
+<script src="js/confirm.js"></script>

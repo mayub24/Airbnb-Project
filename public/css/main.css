@@ -7,6 +7,7 @@
 body
 {
     font-family: cursive;
+    overflow-x: hidden;
 }
 
 ul
@@ -297,10 +298,16 @@ i#plus1, i#plus2, i#plus3
         flex-direction: column;
     }
 
+    .chng
+    {
+        padding: 1em;
+    }
+
     
     .list
     {
         padding-bottom: 30px;
+        /* padding: 20px; */
     }
 
 
@@ -309,6 +316,8 @@ i#plus1, i#plus2, i#plus3
         flex-direction: column;
         text-align: center;
         border-left: 2px solid black;
+        border-bottom: 2px solid black;
+        /* padding: ; */
     }
 
 

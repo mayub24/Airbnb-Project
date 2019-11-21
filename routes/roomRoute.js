@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const roomModel = require('../models/roomModel');
 const path = require('path');
+const access = require('../accessMiddleware/access');
 
 
 router.get('/room', (req, res) =>
@@ -29,7 +30,7 @@ router.get('/room', (req, res) =>
 })
 
 // Adding room
-router.get('/newRoom', (req, res) =>
+router.get('/newRoom', access, (req, res) =>
 {
     const title = 'Add New Room | Airbnb';
     const style = 'newRoom.css';
@@ -157,7 +158,7 @@ router.get('/info/:id', (req, res) =>
 // Clicking Edit Button
 
 // Getting edit page
-router.get('/edit/:id', (req, res) =>
+router.get('/edit/:id',access, (req, res) =>
 {
     roomModel.findById(req.params.id)
     .then((val) =>

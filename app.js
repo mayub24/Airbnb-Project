@@ -52,8 +52,6 @@ app.use((req, res, next) =>
 })
 
 
-
-
 // establishing routes
 app.use('/', homeRoute);
 app.use('/', userRoute);
