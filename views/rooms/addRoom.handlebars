@@ -2,7 +2,10 @@
 <h2 class="new-room-heading">Adding A New Room!</h2>
 
         {{#each err}}
+        <div class="errz">
             {{this}}
+        </div>
+            <br>
         {{/each}}
 
 <form action="/newRoom" method="post" enctype="multipart/form-data">

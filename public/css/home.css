@@ -18,10 +18,6 @@
     justify-content: center;
 }
 
-p.uzer
-{
-    color: white;
-}
 
 .title
 {
@@ -191,10 +187,6 @@ i#web:hover
     width: 300px;
 }
 
-p.uzer
-{
-    display: none;
-}
 
 
 @media(min-width: 800px)
@@ -228,12 +220,7 @@ p.uzer
 /* max-width: if it goes les than 800px */
 @media(max-width: 800px) 
 {
-    p.uzer
-    {
-        display: block;
-        font-weight: bold;
-        font-size: 1.2em;
-    }
+
 
     .title > h1
     {

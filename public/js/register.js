@@ -24,12 +24,50 @@ blurz.forEach((val) =>
 
 
 // Functions to guess incorrect values right away
+document.querySelector(`#fname`).addEventListener(`blur`, checkFirst);
+document.querySelector(`#lname`).addEventListener(`blur`, checkLast);
 document.querySelector(`#userName`).addEventListener(`blur`, checkName);
 document.querySelector(`#pass`).addEventListener(`blur`, checkPass);
 document.querySelector(`#adrs`).addEventListener(`blur`, checkAddress);
-document.querySelector(`#num`).addEventListener(`blur`, checkPhone);
 document.querySelector(`#mail`).addEventListener(`blur`, checkEmail);
 document.querySelector(`#cpass`).addEventListener(`blur`, confirmPass);
+
+
+function checkFirst()
+{
+    const fname = document.querySelector(`#fname`);
+    const reg = /^[A-Za-z]{2,20}$/;
+
+    if(!reg.test(fname.value))
+    {
+        fname.style.border = `2px solid red`;
+        document.querySelector(`.f-err`).style.display = `block`;
+    }
+    else
+    {
+        document.querySelector(`.f-err`).style.display = `none`;
+        fname.style.border = `2px solid lightgreen`;
+    }
+}
+
+
+function checkLast()
+{
+    const lname = document.querySelector(`#lname`);
+    const reg = /^[A-Za-z]{2,20}$/;
+
+    if(!reg.test(lname.value))
+    {
+        lname.style.border = `2px solid red`;
+        document.querySelector(`.l-err`).style.display = `block`;
+    }
+    else
+    {
+        document.querySelector(`.l-err`).style.display = `none`;
+        lname.style.border = `2px solid lightgreen`;
+    }
+}
+
 
 function checkName() // 1. Username
 {
@@ -69,21 +107,20 @@ function checkPass() // 2. Password
 
 function confirmPass() // 2. Password
 {
-    const pass = document.querySelector(`#cpass`);
-    const reg = /^(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9])(?=.*[!@#$%^&*<>?])[\w\d\W].{8,16}$/;
+    const pass = document.querySelector(`#pass`);
+    const cpass = document.querySelector('#cpass');
 
-    if(!reg.test(pass.value))
+    if(pass.value !== cpass.value)
     {
-        pass.style.border = `2px solid red`;
+        cpass.style.border = `2px solid red`;
         document.querySelector(`.c-passwrd`).style.display = `block`;
     }
     else
     {
         document.querySelector(`.c-passwrd`).style.display = `none`;
-        pass.style.border = `2px solid lightgreen`;
+        cpass.style.border = `2px solid lightgreen`;
     }
 }
-
 
 
 function checkAddress() // 3. Address
@@ -103,26 +140,6 @@ function checkAddress() // 3. Address
     }
 }
 
-function checkPhone()  // 5. Phone Number
-{
-    const phon = document.querySelector(`#num`);
-// To explain the bottom line, the value MUST start with 3 digits, the "( )" are optional as they have question marks after them
-// Then we say that "[-. ]" dash, dot and a space are optional by putting ? in front of them
-// then we end of with 4 more digits
-    const reg = /^\(?\d{3}\)?[-.]?\d{3}[-.]?\d{4}$/; 
-
-    if(!reg.test(phon.value)) // if the test return false...
-    {
-        phon.style.border = `2px solid red`;
-        document.querySelector(`.desc-num`).style.display = `block`;
-    }
-    else // if the test returns true...
-    {
-        
-        phon.style.border = `2px solid lightgreen`;
-        document.querySelector(`.desc-num`).style.display = `none`;
-    }
-}
 
 function checkEmail() // 4. Email
 {

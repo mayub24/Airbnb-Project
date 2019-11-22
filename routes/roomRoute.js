@@ -63,7 +63,45 @@ router.post('/newRoom', (req, res) =>
     const errors = [];
 
     // check validation
+    if(roomData.name == "")
+    {
+        errors.push('Room name is not valid.')
+    }
 
+    if(roomData.location == "")
+    {
+        errors.push('location is not valid.')
+    }
+
+    if(roomData.roomz == "")
+    {
+        errors.push('Number of rooms is not valid.')
+    }
+
+    if(roomData.bedz == "")
+    {
+        errors.push('Number of beds is not valid.')
+    }
+
+    if(roomData.bathrooms == "")
+    {
+        errors.push('Number of bathrooms is not valid.')
+    }
+
+    if(roomData.floors == "")
+    {
+        errors.push('Number of floors is not valid.')
+    }
+
+    if(roomData.guests == "")
+    {
+        errors.push('Number of guests is not valid.')
+    }
+
+    if(roomData.price == "")
+    {
+        errors.push('Price is not valid.')
+    }
 
     // File errors
     if(req.files == null)

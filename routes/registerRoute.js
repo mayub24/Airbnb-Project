@@ -27,13 +27,35 @@ router.post('/send', (req, res) =>
      // Creating formData that will hold user information
      const userData = 
      {
+         firstName: req.body.firstName,
+         lastName: req.body.lastName,
          usr: req.body.usr,
          pass: req.body.pass,
          adrs: req.body.adrs,
-         pNum: req.body.pNum,
-         eml: req.body.eml
+         eml: req.body.eml,
+         cpass: req.body.cpass
      }
 
+     if(userData.cpass !== userData.pass)
+     {
+         errors.push('Passwords do not match');
+     }
+
+    // First name
+    let firstNameReg = /^[A-Za-z0-9]{2,20}$/;
+
+    if(!firstNameReg.test(userData.firstName))
+    {
+        errors.push(`First name should have minimum of 20 characters.`);
+    }
+
+    // Last name
+    let lastNameReg = /^[A-Za-z0-9]{2,20}$/;
+
+    if(!lastNameReg.test(userData.lastName))
+    {
+        errors.push(`Last name should have minimum of 20 characters.`);
+    }
 
     // Name error handling
     let nameReg = /^[A-Za-z0-9]{2,25}$/;
@@ -57,14 +79,6 @@ router.post('/send', (req, res) =>
     if(!adrsReg.test(userData.adrs))
     {
         errors.push('Please enter a valid home address.')
-    }
-
-    // Phone error handling
-    const numReg = /^\(?\d{3}\)?[-.]?\d{3}[-.]?\d{4}$/; 
-
-    if(!numReg.test(userData.pNum))
-    {
-        errors.push('Phone number MUST be 10 digits!');
     }
 
     // Email error handling
@@ -95,6 +109,7 @@ router.post('/send', (req, res) =>
 
     else
     {
+        // CHANGE THIS SECTION TO ENVRIONEMNT VAIRBALES
 
          // SEND EMAIL
         
@@ -227,12 +242,12 @@ router.post('/login', (req, res) =>
                     req.session.userLogin = user;
 
                     // redirect to homepage
-                    res.redirect('/');
+                    res.redirect('/dashboard');
                 }
                 else
                 {
                     // Create error
-                    error.push('Passwords do not match');
+                    error.push('Password is incorrect for this username.');
 
 
                     // render same page
@@ -247,6 +262,13 @@ router.post('/login', (req, res) =>
         }
     })
 })
+
+// Creating dashboard which will have all user information
+router.get('/dashboard', (req, res) =>
+{
+    res.render('registration/dashboard');
+})
+
 
 
 // Logout request

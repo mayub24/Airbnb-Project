@@ -51,6 +51,20 @@
         <h4>Its fast and breezy. Just like our service.</h4>
 <!-- Grouping in paragraphs is important so that Grid can identify whats 1 fraction/2 fraction -->
 <div class="grid-time">
+      <p>
+            {{!-- <label for="">Username</label> --}}
+            <input type="text" placeholder="First Name" name="firstName" id="fname">
+            <p class="f-err" id="err">*Must be between 2 and 20 characters*</p>
+        </p>
+
+
+          <p>
+            {{!-- <label for="">Username</label> --}}
+            <input type="text" placeholder="Last name" name="lastName" id="lname">
+            <p class="l-err" id="err">*Must be between 2 and 20 characters</p>
+        </p>
+
+
         <p>
             {{!-- <label for="">Username</label> --}}
             <input type="text" placeholder="Username" name="usr" id="userName" value={{name}}>
@@ -73,12 +87,6 @@
             {{!-- <label for="">Home Address</label> --}}
             <input type="text" placeholder="Home Address" name="adrs" id="adrs" value={{adrs}}> 
             <p class="ad-err" id="err">*Incorrect address*</p>
-        </p>
-
-        <p>
-            {{!-- <label for="">Phone Number</label> --}}
-            <input type="text" placeholder="Phone Number" name="pNum" id="num" value={{pNum}}>
-            <p class="desc-num" id="err">*Must include 10 digits*</p>
         </p>
 
         <p>

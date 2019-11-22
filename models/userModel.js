@@ -3,6 +3,16 @@ const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
 const userSchema = new Schema({
+    firstName:
+    {
+        type: String,
+        required: true
+    },
+    lastName:
+    {
+        type: String,
+        required: true
+    },
     usr: 
     {
         type: String,
@@ -18,16 +28,12 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
-    pNum: 
-    {
-        type: String,
-        required: true
-    },
     eml: 
     {
         type: String,
         required: true
     },
+    // HOW DO I ADD ADMINISTRATOR HERE? ANOTHER COLUMN? another type?
     type:
     {
         type: String,

@@ -100,6 +100,20 @@ input
     display: none;
 }
 
+.errz
+{
+    
+    background-color: lightpink;
+    color: red;
+    border: 1px solid black;
+    border-radius: 10px;
+    text-align: center;
+    padding: 0.5em;
+    margin: 10px auto;
+    font-weight: bold;
+    width: 50%;
+}
+
 @media(max-width: 800px)
 {
     .newRoom

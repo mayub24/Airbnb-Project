@@ -169,10 +169,6 @@ span#bold
     margin-left: 5em;
 }
 
-#userName
-{
-    margin-bottom: -10px;
-}
 
 p ~ p
 {
@@ -184,7 +180,7 @@ p ~ p
     margin: -15px 0px;
 }
 
-.ad-err, .desc, .passwrd, .desc-num, .desc-eml, .c-passwrd
+.ad-err, .desc, .passwrd, .desc-eml, .c-passwrd, .f-err, .l-err
 {
     display: none;
     color: red;
@@ -193,6 +189,11 @@ p ~ p
 .about-us p:nth-child(3)
 {
     margin-top: 50px;
+}
+
+#lname
+{
+    margin-top: -1em;
 }
 
 @media(max-width:800px)
@@ -266,7 +267,7 @@ p ~ p
         margin-bottom: -1.4em;
     }
 
-    .ad-err, .desc, .passwrd, .desc-num, .desc-eml, .c-passwrd
+    .ad-err, .desc, .passwrd, .desc-eml, .c-passwrd, .f-err, .l-err
     {
         width: 90%;
         text-align: left;

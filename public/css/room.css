@@ -117,7 +117,7 @@ h1
 
 #edit
 {
-    width: 92%;
+    width: 94%;
     margin-left: 8px;
     padding: 0.3em;
 }
@@ -137,7 +137,16 @@ form
 {
     text-align: center;
     margin-bottom: 2em;
+    margin-top: 1em;
     padding: 20px;
+}
+
+#infoz
+{
+    margin: 0 auto;
+    width: 94%;
+    margin: 5px 0px 10px 9px;
+    padding: 0.3em;
 }
 
 
