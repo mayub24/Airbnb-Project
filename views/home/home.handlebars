@@ -15,6 +15,10 @@
 
 <!-- Grouping in paragraphs is important so that Grid can identify whats 1 fraction/2 fraction -->
 
+    {{#each errz}}
+        {{this}}
+    {{/each}}
+
 <div class="form">
     
         <form action="/home" method="post">
@@ -22,7 +26,7 @@
         <p>
             <label for="">Where</label>
             <br>
-            <input type="text" placeholder="Anywhere">
+            <input type="text" placeholder="Anywhere" name="loc">
         </p>
 
         <p>

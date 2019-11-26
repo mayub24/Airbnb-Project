@@ -3,6 +3,7 @@ const router = express.Router();
 // Getting model from model file
 const model = require('../models/userModel');
 const bcrypt = require('bcryptjs');
+// const permission = require('../accessMiddleware/permission');
 
 router.get('/register', (req, res) =>
 {
@@ -242,7 +243,9 @@ router.post('/login', (req, res) =>
                     req.session.userLogin = user;
 
                     // redirect to homepage
-                    res.redirect('/dashboard');
+                    res.redirect('/');
+
+                    // console.log(req.session.userLogin);
                 }
                 else
                 {

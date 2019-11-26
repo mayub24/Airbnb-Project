@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const userModel = require('../models/roomModel');
 
 router.get('/', (req, res) =>
 {
@@ -14,13 +15,46 @@ router.get('/', (req, res) =>
 
 router.post('/home', (req, res) =>
 {
-    res.redirect('/room');
 
-    // Pull rooms according to location inside the database
-    // Therefore, in some way, we need to get location from documents saved inside the database
-    // and then compare those locations with the locations in the room
-    // then pull those rooms
     
+    userModel.find({location: req.body.loc}) // finding all of those locations that match typed value
+    .then((getLoc) =>
+    {
+
+        const title = 'Airbnb';
+        const style = 'home.css';
+
+        console.log(req.body.loc);
+        console.log(getLoc);   
+        
+        if(getLoc == null)
+        {
+            error = [];
+
+            error.push(`No Location "${req.body.loc}" found!`);
+
+            res.render('home/home',
+            {
+                ttl: title,
+                sty: style,
+                errz: error
+            })
+        }
+        else
+        {
+            // When a location is found...
+            // How do i pull a specific location???????
+            res.render('rooms/locationRooms', 
+            {
+                local: getLoc
+            })
+        }
+
+    })
+    .catch((err) =>
+    {
+        console.log(`could not get location: ${err}`);
+    })
 
 })
 

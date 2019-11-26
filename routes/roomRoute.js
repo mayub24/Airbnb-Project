@@ -264,5 +264,70 @@ router.delete('/delete/:id', (req, res) =>
 })
 
 
+// ----------------------------------------------------------------
+// BOOKING PART!!!!!!
+// ----------------------------------------------------------------
+
+// router.get('/save/:id', (req, res) =>
+// {
+//     roomModel.findById(req.params.id)
+//     .then((val) =>
+//     {
+//         const title = 'Edit Room | Airbnb';
+//         const style = 'newRoom.css';
+
+//         res.render('rooms/bookedRooms',
+//         {
+//             ttl: title,
+//             sty: style,
+//             rooms: val
+//         });
+        
+//     })
+//     .catch((err) => console.log(`error in edditing room ${err}`));
+
+// });
+
+
+
+
+// // GETTING ROOMS
+// router.put('/save/:id', (req, res) =>
+// {
+//     roomModel.findById(req.params.id)
+//     .then((val) =>
+//     {
+//         // SAVE THE STUFF AGAIN
+//         val.save()
+//         .then(() =>
+//         {
+//             res.redirect('/bookedRooms');
+//         })
+//         .catch((err) =>
+//         {
+//             console.log(`problem in redirecting ${err}`);
+//         })
+        
+//     })
+//     .catch(err => console.log(`problem in putting edit ${err}`));
+// })
+
+
+
+// router.get('/bookedRooms', (req, res) =>
+// {
+//     const title = 'Booked Room | Airbnb';
+
+//     roomModel.findById(req.params.id)
+//     .then((val) =>
+//     {
+//         res.render('rooms/bookedRooms',
+//         {
+//             roomz: val,
+//             ttl: title
+//         })
+//     })
+//     .catch(err => console.log(`Problem in pulling room ${err}`));
+// })
 
 module.exports = router;
