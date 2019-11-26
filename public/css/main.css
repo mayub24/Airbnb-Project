@@ -254,9 +254,21 @@ i#plus1, i#plus2, i#plus3
 }
 
 
+
 @media(max-width: 800px) 
 {
-        
+    #barz
+    {
+        color: white;
+        padding: 20px;
+        font-size: 2em;
+    }  
+    
+    .close
+    {
+        display: none;
+    }
+
     *
     {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -290,7 +302,15 @@ i#plus1, i#plus2, i#plus3
 
     .chng
     {
+        display: none;
+    }
+
+    .show
+    {
+        display: flex;
+        flex-direction: column;
         padding: 1em;
+        margin-top: -20px;
     }
 
     
@@ -305,8 +325,8 @@ i#plus1, i#plus2, i#plus3
     {
         flex-direction: column;
         text-align: center;
-        border-left: 2px solid black;
         border-bottom: 2px solid black;
+        width: 400px;
         /* padding: ; */
     }
 

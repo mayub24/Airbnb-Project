@@ -21,21 +21,23 @@
     <a href="/"><img src="img/bnbbruh.png" alt="" width="80px"></a>
     
 
-        <input type="text" class="inp" placeholder="Search hotels...">
-        <button class="search-hotel">Search!</button>
+        {{!-- <input type="text" class="inp" placeholder="Search hotels...">
+        <button class="search-hotel">Search!</button> --}}
+
+
+    <i class="fas fa-bars" id="barz"></i>
          
     <ul class="chng">
         <li><a href="/">Home</a></li>
         <li><a href="room">Rooms</a></li>
         {{#if user}}
-        <li><a href="logout">Logout</a></li>
         <li><a href="dashboard">Dashboard</a></li>
+        <li><a href="logout">Logout</a></li>
         {{else}}
         <li><a href="register">Sign Up</a></li>
         <li><a href="login">Login</a></li>
         {{/if}}
     </ul>
-
 
 </nav>
 
@@ -116,5 +118,6 @@
 </footer>
 
 <script src="js/main.js"></script>
+<script src="js/nav.js"></script>
 </body>
 </html>

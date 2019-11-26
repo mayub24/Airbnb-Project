@@ -27,7 +27,7 @@ router.post('/home', (req, res) =>
         console.log(req.body.loc);
         console.log(getLoc);   
         
-        if(getLoc == null)
+        if(getLoc == "")
         {
             error = [];
 
@@ -42,11 +42,16 @@ router.post('/home', (req, res) =>
         }
         else
         {
+            const title = `${req.body.loc} Rooms`;
+            const style = 'room.css';
+
             // When a location is found...
             // How do i pull a specific location???????
             res.render('rooms/locationRooms', 
             {
-                local: getLoc
+                local: getLoc,
+                ttl: title,
+                sty: style
             })
         }
 
