@@ -18,17 +18,20 @@ h1
     padding: 1em;
 }
 
-.imgz img
+/* .imgz img
 {
     width: 100%;
     height: 100%;
     max-width: 400px;
     margin: auto;
-}
+} */
 
-.list
+.imgz img
 {
-    padding-bottom: 5px;
+    width: 260px;
+    height: 200px; 
+    /* If img height is bigger than min-height, then the min-height values will not be applied */
+    /* Therefore we will use just height */
 }
 
 
@@ -145,14 +148,14 @@ form
 #infoz
 {
     margin: 0 auto;
-    width: 94%;
-    margin: 5px 0px 10px 9px;
+    width: 90%;
+    margin: 5px 0px 10px 13px;
     padding: 0.3em;
 }
 
 
 
-@media(max-width: 800px)
+@media(max-width: 1096px)
 {
     .high1
     {

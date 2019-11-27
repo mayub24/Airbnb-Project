@@ -3,7 +3,7 @@ const router = express.Router();
 const roomModel = require('../models/roomModel');
 const path = require('path');
 const access = require('../accessMiddleware/access');
-
+const perm = require("../accessMiddleware/permission");
 
 router.get('/room', (req, res) =>
 {
@@ -30,7 +30,7 @@ router.get('/room', (req, res) =>
 })
 
 // Adding room
-router.get('/newRoom', access, (req, res) =>
+router.get('/newRoom', access, perm, (req, res) =>
 {
     const title = 'Add New Room | Airbnb';
     const style = 'newRoom.css';
@@ -196,7 +196,7 @@ router.get('/info/:id', (req, res) =>
 // Clicking Edit Button
 
 // Getting edit page
-router.get('/edit/:id',access, (req, res) =>
+router.get('/edit/:id',access,perm, (req, res) =>
 {
     roomModel.findById(req.params.id)
     .then((val) =>
@@ -250,7 +250,7 @@ router.put('/edit/:id', (req, res) =>
 
 
 // Clicking Delete Button
-router.delete('/delete/:id', (req, res) =>
+router.delete('/delete/:id',perm, (req, res) =>
 {
     roomModel.deleteOne({_id: req.params.id})
     .then(() =>
