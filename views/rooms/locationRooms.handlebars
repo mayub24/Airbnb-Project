@@ -1,8 +1,20 @@
 <div class="box">
-{{#each local}}
-<div class="imgzz">
-    <a href="/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
-    <a href="/info/{{this._id}}"><button id="infoz">Show info</button></a>
-</div>
-{{/each}}
-</div>
+
+        {{#each local}}
+
+    <div class="imgz">
+            <div class="item-1 htl">
+                {{!-- Making the img a link so we get extra detail when we click on it --}}
+                <a href="/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
+
+                <div class="txt1">
+                    <a href="/info/{{this._id}}"><button id="infoz">Show info</button></a>
+                    
+
+                <form action="/save/{{this._id}}?_method=PUT" method="POST">
+                        <button id="book" type="submit">Book Room</button>
+                </form>
+                </div>
+            </div>
+        </div>
+ {{/each}}

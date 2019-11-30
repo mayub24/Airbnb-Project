@@ -32,6 +32,8 @@ h1
     height: 200px; 
     /* If img height is bigger than min-height, then the min-height values will not be applied */
     /* Therefore we will use just height */
+    /* overflow: hidden; */
+    /* object-fit: contain; */
 }
 
 

@@ -42,7 +42,14 @@ const userSchema = new Schema({
     dateCreated:
     {
         type: Date,
-        default:Date.now(),
+        default:Date.now()
+    },
+    bookedRooms:
+    {
+        /*type: [String],
+        required: false*/
+        // roomId: Number,
+
     }
 });
 

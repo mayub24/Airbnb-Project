@@ -4,6 +4,9 @@ const router = express.Router();
 const model = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 // const permission = require('../accessMiddleware/permission');
+const nodemailer = require('nodemailer');
+const sgTransport = require('nodemailer-sendgrid-transport');
+
 
 router.get('/register', (req, res) =>
 {
@@ -110,14 +113,7 @@ router.post('/send', (req, res) =>
 
     else
     {
-        // CHANGE THIS SECTION TO ENVRIONEMNT VAIRBALES
-
          // SEND EMAIL
-        
-        // API KEY ID:  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
-        const nodemailer = require('nodemailer');
-        const sgTransport = require('nodemailer-sendgrid-transport');
-
         const options = {
             auth: {
                 api_key: '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'
@@ -159,7 +155,7 @@ router.post('/send', (req, res) =>
         .then(() =>
         {
             console.log('Document created');
-            res.redirect(`/login`);
+            res.redirect(`/send`);
         })
         .catch((err) =>
         {

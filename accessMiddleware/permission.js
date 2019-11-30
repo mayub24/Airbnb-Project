@@ -6,7 +6,7 @@ const permission = ((req, res, next) =>
     }
     else
     {
-        res.redirect('/room');
+       res.redirect('/room');
     }
 })
 
