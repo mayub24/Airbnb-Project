@@ -138,6 +138,7 @@ router.post('/newRoom', (req, res) =>
         rooms.save()
         .then(() =>
         {
+            console.log(req.files.roomPic);
             req.files.roomPic.name = `pic_${rooms._id}_${path.parse(req.files.roomPic.name).ext}`;
             // Moving file to a specific location where we will be able to pull from
             req.files.roomPic.mv(`./public/img/${req.files.roomPic.name}`)
@@ -263,5 +264,23 @@ router.delete('/delete/:id',perm, (req, res) =>
     })
 })
 
+
+// Manging rooms
+router.get('/manager',access, (req, res) =>
+{
+    const title = 'Airbnb | Admin Rooms';
+    const style = 'admin.css';
+    roomModel.find()
+
+    .then((info) =>
+    {
+        res.render('rooms/manageRooms', 
+        {
+            roomz: info,
+            ttl: title,
+            sty: style
+        })
+    })
+})
 
 module.exports = router;

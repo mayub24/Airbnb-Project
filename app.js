@@ -47,6 +47,7 @@ app.use((req, res, next) =>
 {
     // Using locals to get the session name
     res.locals.user = req.session.userLogin;
+    res.locals.admin = req.session.adminLogin;
 
     next();
 })

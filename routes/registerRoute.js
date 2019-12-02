@@ -238,8 +238,19 @@ router.post('/login', (req, res) =>
                     // Create a session
                     req.session.userLogin = user;
 
-                    // redirect to homepage
-                    res.redirect('/');
+
+                    if(req.session.userLogin.type === 'Admin')
+                    { 
+                        
+                        req.session.adminLogin = true;
+                        // redirect to homepage
+                        res.redirect('/dashboard');
+
+                    }
+                    else
+                    {
+                        res.redirect('/userDashboard');
+                    }
 
                     // console.log(req.session.userLogin);
                 }
@@ -267,6 +278,12 @@ router.get('/dashboard', (req, res) =>
 {
     res.render('registration/dashboard');
 })
+
+router.get('/userDashboard', (req, res) =>
+{
+    res.render('registration/userDash');
+})
+
 
 
 

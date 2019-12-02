@@ -1,0 +1,25 @@
+<h1>Manage Hosted Rooms</h1>
+
+
+<a href="newRoom" id="room-link"><button id="newRm">Add a New Room</button></a>
+
+<div class="holder">
+{{#each roomz}}
+
+<div class="grided">
+    {{!-- <ul> --}}
+        <li><a href="/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt="" height="50px" width="70px"></a></li>
+        <li><a href="/edit/{{this._id}}" id="edit-link"><button id="edit">Edit</button></a></li>
+        <li>
+        <form action="/delete/{{this._id}}?_method=DELETE" method="post">
+        <button type="submit" id="del">Delete</button>
+        </form>
+        </li>
+    </div>
+    {{!-- </ul> --}}
+        {{!-- <br> --}}
+
+
+
+{{/each}}
+</div>

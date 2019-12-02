@@ -30,13 +30,26 @@
     <ul class="chng">
         <li><a href="/">Home</a></li>
         <li><a href="room">Rooms</a></li>
+        
+        {{#if admin}}
+        <li><a href="manager">Manage Rooms</a></li>
+        {{/if}}
+
+
         {{#if user}}
         <li><a href="dashboard">Dashboard</a></li>
         <li><a href="logout">Logout</a></li>
-        {{else}}
+        {{/if}}
+
+
+{{#unless user}}
         <li><a href="register">Sign Up</a></li>
         <li><a href="login">Login</a></li>
-        {{/if}}
+{{/unless}}
+
+        {{!-- {{#if admin}}
+            <li><a href="logout">Admin Dashboard</a></li>
+        {{/if}} --}}
     </ul>
 
 </nav>
