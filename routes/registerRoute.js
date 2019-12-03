@@ -235,9 +235,8 @@ router.post('/login', (req, res) =>
             {
                 if(equal)
                 {
-                    // Create a session
-                    req.session.userLogin = user;
 
+                    req.session.userLogin = user;
 
                     if(req.session.userLogin.type === 'Admin')
                     { 
@@ -245,10 +244,10 @@ router.post('/login', (req, res) =>
                         req.session.adminLogin = true;
                         // redirect to homepage
                         res.redirect('/dashboard');
-
                     }
                     else
                     {
+                        // Create a user session
                         res.redirect('/userDashboard');
                     }
 

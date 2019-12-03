@@ -24,6 +24,7 @@ h1
     border: 1px solid darkgray;
     width: 80%;
     margin: 20px auto 20px auto;
+    border-radius: 10px;
 }
 
 .grided > *
