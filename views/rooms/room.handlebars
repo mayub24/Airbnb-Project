@@ -235,8 +235,47 @@
 
 
 
-      {{!-- {{#if user}} --}}
+      {{#if user}}
 
+    {{#each roomInfo}}
+{{!-- {{#if user}} --}}
+    <div class="imgz">
+
+            <!-- ITEMS [EACH ITEM WILL HAVE A SEPERATE DIV] -->
+            <!-- Item 1 -->
+            <div class="item-1 htl">
+                {{!-- Making the img a link so we get extra detail when we click on it --}}
+                <a href="/info"><img src="/img/{{this.roomPic}}" alt=""></a>
+
+                <div class="txt1">
+                    <a href="/info"><button id="infoz">Show info</button></a>
+                    {{!-- <p class="item-name">Name: {{this.name}}</p> --}}
+                    {{!-- <p>Price: ${{this.price}}</p>
+                    <p>Address: {{this.location}}</p>
+                    <p># of Floors: {{this.floors}}</p>
+                    <p># of Bathrooms: {{this.bathrooms}}</p>
+                    <p>Max # of Guests: {{this.guests}}</p> --}}
+              
+                        {{!-- Value:{{user}}
+                    {{#if user}}
+                    <a href="/edit/{{this._id}}" id="edit-link"><button id="edit">Edit</button></a>
+                    <form action="/delete/{{this._id}}?_method=DELETE" method="post">
+                    <button type="submit" id="del">Delete</button>
+                    </form>
+                    {{/if}} --}}
+
+                <form action="/save/{{this._id}}" method="POST">
+                        <button id="book" type="submit">Book Room</button>
+                </form>
+                </div>
+            </div>
+        </div>
+{{!-- {{/if}} --}}
+ {{/each}}
+
+ {{else}}
+
+    
     {{#each roomInfo}}
 {{!-- {{#if user}} --}}
     <div class="imgz">
@@ -264,9 +303,6 @@
                     </form>
                     {{/if}} --}}
 
-                <form action="/save/{{this._id}}?_method=PUT" method="POST">
-                        <button id="book" type="submit">Book Room</button>
-                </form>
                 </div>
             </div>
         </div>
@@ -274,7 +310,7 @@
  {{/each}}
 
 
-      {{!-- {{/if}} --}}
+      {{/if}}
  
 
 

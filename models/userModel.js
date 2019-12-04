@@ -43,7 +43,14 @@ const userSchema = new Schema({
     {
         type: Date,
         default:Date.now()
-    }
+    },
+    bookedRooms: // array of objects
+    [
+        {
+           type: mongoose.Schema.Types.ObjectId,
+           ref: "rooms"
+        }
+    ]
 });
 
 // Adding encryption

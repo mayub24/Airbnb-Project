@@ -57,17 +57,7 @@ const roomSchema = new Schema
         roomPic:
         {
             type: String,
-        },
-        bookedRooms:
-            [
-                {
-                    _id:
-                    {
-                        type: String,
-                        required: false
-                    }
-                }
-            ]
+        }
     }
 )
 

@@ -6,6 +6,7 @@ const bcrypt = require('bcryptjs');
 // const permission = require('../accessMiddleware/permission');
 const nodemailer = require('nodemailer');
 const sgTransport = require('nodemailer-sendgrid-transport');
+const roomModel = require('../models/roomModel');
 
 
 router.get('/register', (req, res) =>
@@ -116,7 +117,7 @@ router.post('/send', (req, res) =>
          // SEND EMAIL
         const options = {
             auth: {
-                api_key: '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'
+                api_key: `${process.env.NODEMAILER_KEY}`
             }
         }
 
@@ -272,11 +273,12 @@ router.post('/login', (req, res) =>
     })
 })
 
+
 // Creating dashboard which will have all user information
-router.get('/dashboard', (req, res) =>
-{
-    res.render('registration/dashboard');
-})
+// router.get('/dashboard', (req, res) =>
+// {
+//     res.render('registration/dashboard');
+// })
 
 router.get('/userDashboard', (req, res) =>
 {
@@ -292,6 +294,57 @@ router.get('/logout', (req, res) =>
     req.session.destroy();
     res.redirect('/');
 })
+
+// Getting room that contains booked
+router.get('/dashboard', (req, res) =>
+{
+    const title = 'Airbnb | Booked Rooms';
+    const style = 'room.css';
+
+    // console.log(`User: ${user}`);
+    let roomHolder = [];
+
+    model.findById(req.session.userLogin._id)
+    .then((user) =>
+    {
+
+        for(let i = 0; i < user.bookedRooms.length; i++)
+        {
+            roomModel.findById(user.bookedRooms[i])
+            .then((roomz) =>
+            {
+                roomHolder.push(roomz);
+                console.log(roomHolder);
+            })
+        }
+
+        res.render('registration/dashboard', {
+            rooms: roomHolder,
+            ttl: title,
+            sty: style
+        })
+    })
+    .catch((err) =>
+    {
+        console.log(`Could not book rooms: ${err}`);
+    })
+})
+
+// Posting Room for Booking
+router.post('/save/:id', (req, res) =>
+{
+    model.findByIdAndUpdate(req.session.userLogin._id,{
+        
+        $push: {bookedRooms: `${req.params.id}`}
+
+    })
+    .then((userId) =>
+    {
+        console.log(userId);
+        res.redirect('/dashboard');
+    })
+})
+
 
 
 

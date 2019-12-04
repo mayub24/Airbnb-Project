@@ -283,4 +283,16 @@ router.get('/manager',access, (req, res) =>
     })
 })
 
+// // Posting Room for Booking
+// router.post('/save/:id', (req, res) =>
+// {
+//     roomModel.findByIdAndUpdate(req.session.user._id)
+//     .then((userId) =>
+//     {
+//         console.log(userId);
+//         res.render('rooms/rooms');
+//     })
+// })
+
+
 module.exports = router;

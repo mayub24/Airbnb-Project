@@ -1,4 +1,10 @@
 <h1 style="padding: 20px;text-align:center;">Welcome Admin: {{user.firstName}} {{user.lastName}}!</h1>
 
-<a href="/bookedRooms">Show Booked Rooms</a>
+{{!-- <li><a href="/save/{{this._id}}" id="edit-link"><button id="booked">Booked Rooms</button></a></li> --}}
 
+{{#each rooms}}
+        {{this}}
+{{/each}}
+
+{{rooms.name}}
+{{rooms.location}}
