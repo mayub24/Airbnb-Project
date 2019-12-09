@@ -11,8 +11,6 @@ const methodOverride = require('method-override');
 const session = require('express-session');
 // File upload
 const fileUpload = require('express-fileupload');
-// Path
-const path = require('path');
 
 
 // Getting dotenv
@@ -30,7 +28,7 @@ const app = express();
 app.use(session({ secret: 'This is a secret!'}));
 
 // Providing static files
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static('public'));
 
 // Connecting file upload to express
 app.use(fileUpload());
