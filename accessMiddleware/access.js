@@ -2,7 +2,7 @@ const giveAccess = ((req, res, next) =>
 {
     if(req.session.userLogin == null)
     {
-        res.redirect('/login');
+        res.redirect('/user/login');
     }
     else
     {

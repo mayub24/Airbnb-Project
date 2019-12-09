@@ -83,10 +83,6 @@ button
     margin: 0 auto;
 }
 
-.list
-{
-    padding-bottom: 17px;
-}
 
 div li
 {
@@ -134,7 +130,7 @@ h3
 i#foot:hover
 {
     cursor: pointer;
-    color: lightgray;
+    color: #ff5a5f;
     transition: 0.5s all ease-in-out;
 }
 
@@ -253,6 +249,10 @@ i#plus1, i#plus2, i#plus3
     cursor: pointer;
 }
 
+.list
+{
+    padding-bottom: 17px;
+}
 
 
 @media(max-width: 800px) 
@@ -264,7 +264,13 @@ i#plus1, i#plus2, i#plus3
         right: 3%;
         color: white;
         font-size: 2em;
-    }  
+    } 
+    
+    .list
+    {
+        padding-bottom: 2px;
+    }
+
 
     #barz:hover
     {
@@ -293,6 +299,7 @@ i#plus1, i#plus2, i#plus3
     i#foot
     {
         padding: 20px;
+        font-size: 35px;
     }
 
     #plus:hover

@@ -36,7 +36,7 @@
 
 
 
-<form method="POST" action="/send">
+<form method="POST" action="/user/send">
 
     {{#each err}}
 
@@ -53,14 +53,14 @@
 <div class="grid-time">
       <p>
             {{!-- <label for="">Username</label> --}}
-            <input type="text" placeholder="First Name" name="firstName" id="fname">
+            <input type="text" placeholder="First Name" name="firstName" id="fname" value={{fname}}>
             <p class="f-err" id="err">*Must be between 2 and 20 characters*</p>
         </p>
 
 
           <p>
             {{!-- <label for="">Username</label> --}}
-            <input type="text" placeholder="Last name" name="lastName" id="lname">
+            <input type="text" placeholder="Last name" name="lastName" id="lname" value={{lname}}>
             <p class="l-err" id="err">*Must be between 2 and 20 characters</p>
         </p>
 
@@ -73,13 +73,13 @@
 
         <p>
             {{!-- <label for="">Password</label> --}}
-            <input type="password" placeholder="New password" name="pass" id="pass" value={{pass}}>
+            <input type="password" placeholder="New password" name="pass" id="pass">
             <p class="passwrd" id="err">*Must start with a capital, have atleast 1 number and symbol and must be between 8 to 16 characters*</p>
         </p>
 
           <p>
             {{!-- <label for="">Password</label> --}}
-            <input type="password" placeholder="Confirm Password" name="cpass" id="cpass" value={{pass}}>
+            <input type="password" placeholder="Confirm Password" name="cpass" id="cpass">
             <p class="c-passwrd" id="c-err">*Must match above text*</p>
         </p>
 
@@ -114,7 +114,7 @@
           <option value="">Sept</option>
           <option value="">Oct</option>
           <option value="">Nov</option>
-          <option value="">Dev</option>
+          <option value="">Dec</option>
         </select>
 
 
@@ -197,6 +197,6 @@
     </form>
 </div>
 
-<script src="js/register.js"></script>
+<script src="/js/register.js"></script>
 
 

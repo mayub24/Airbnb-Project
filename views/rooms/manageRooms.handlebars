@@ -8,10 +8,10 @@
 
 <div class="grided">
     {{!-- <ul> --}}
-        <li><a href="/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt="" height="70px" width="90px"></a></li>
-        <li><a href="/edit/{{this._id}}" id="edit-link"><button id="edit">Edit</button></a></li>
+        <li><a href="/room/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt="" height="70px" width="90px"></a></li>
+        <li><a href="/room/edit/{{this._id}}" id="edit-link"><button id="edit">Edit</button></a></li>
         <li>
-        <form action="/delete/{{this._id}}?_method=DELETE" method="post">
+        <form action="/room/delete/{{this._id}}?_method=DELETE" method="post">
         <button type="submit" id="del">Delete</button>
         </form>
         </li>
@@ -20,11 +20,9 @@
         {{!-- <br> --}}
 
 
-        <li><a href="/save/{{this._id}}" id="edit-link"><button id="booked">Booked Rooms</button></a></li>
-
-
+        {{!-- <li><a href="/save/{{this._id}}" id="edit-link"><button id="booked">Booked Rooms</button></a></li> --}}
 
 {{/each}}
 </div>
 
-<script src="js/confirm.js"></script>
+<script src="/js/confirm.js"></script>

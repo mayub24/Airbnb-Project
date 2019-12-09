@@ -16,7 +16,6 @@ router.get('/', (req, res) =>
 router.post('/home', (req, res) =>
 {
 
-    
     userModel.find({location: req.body.loc}) // finding all of those locations that match typed value
     .then((getLoc) =>
     {

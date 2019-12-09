@@ -4,8 +4,9 @@ const roomModel = require('../models/roomModel');
 const path = require('path');
 const access = require('../accessMiddleware/access');
 const perm = require("../accessMiddleware/permission");
+const model = require('../models/userModel');
 
-router.get('/room', (req, res) =>
+router.get('/listedRooms', (req, res) =>
 {
     const title = 'Airbnb | Rooms';
     const style = 'room.css';
@@ -149,7 +150,7 @@ router.post('/newRoom', (req, res) =>
                 .then(() =>
                 {
                     console.log(`picture saved to database`)
-                    res.redirect('/room');
+                    res.redirect('/room/listedRooms');
                 })
             })
             .catch((err) =>
@@ -237,7 +238,7 @@ router.put('/edit/:id', (req, res) =>
         val.save()
         .then(() =>
         {
-            res.redirect('/room');
+            res.redirect('/room/listedRooms');
         })
         .catch((err) =>
         {
@@ -256,12 +257,20 @@ router.delete('/delete/:id',perm, (req, res) =>
     roomModel.deleteOne({_id: req.params.id})
     .then(() =>
     {
-        res.redirect('/room');
-    })
+        model.findByIdAndUpdate(req.session.userLogin._id,{
+        
+            $pull: {bookedRooms: req.params.id}
+        })
+        .then(() =>
+        {
+            res.redirect('/room/listedRooms');
+        })
     .catch((err) =>
     {
         console.log(`Error in deleting room: ${err}`);
     })
+})
+
 })
 
 

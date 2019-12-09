@@ -10,10 +10,11 @@
                 <div class="txt1">
                     <a href="/info/{{this._id}}"><button id="infoz">Show info</button></a>
                     
-
+{{#if user}}
                 <form action="/save/{{this._id}}?_method=PUT" method="POST">
                         <button id="book" type="submit">Book Room</button>
                 </form>
+{{/if}}
                 </div>
             </div>
         </div>

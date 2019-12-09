@@ -7,6 +7,7 @@ const bcrypt = require('bcryptjs');
 const nodemailer = require('nodemailer');
 const sgTransport = require('nodemailer-sendgrid-transport');
 const roomModel = require('../models/roomModel');
+const access = require('../accessMiddleware/access');
 
 
 router.get('/register', (req, res) =>
@@ -94,6 +95,7 @@ router.post('/send', (req, res) =>
         errors.push('Please enter a valid email with an @ and a valid domain!');
     }
 
+
     // Checking for errors
     if(errors.length > 0)
     {
@@ -104,6 +106,8 @@ router.post('/send', (req, res) =>
             ttl: title,
             sty: style,
             err: errors,
+            fname: userData.firstName,
+            lname: userData.lastName,
             name: userData.usr,
             pass: userData.pass,
             adrs: userData.adrs,
@@ -114,6 +118,9 @@ router.post('/send', (req, res) =>
 
     else
     {
+        const title = 'Airbnb | Register';
+        const style = 'register.css';
+
          // SEND EMAIL
         const options = {
             auth: {
@@ -125,7 +132,7 @@ router.post('/send', (req, res) =>
          
         const email = {
             to: [`${req.body.eml}`],
-            from: 'airbnb@hotmail.com',
+            from: 'airbnb@gmail.com',
             subject: 'Email has been verified!',
             text: '',
             html: `
@@ -153,10 +160,12 @@ router.post('/send', (req, res) =>
 
         newUser
         .save()
-        .then(() =>
+        .then((yer) =>
         {
-            console.log('Document created');
-            res.redirect(`/send`);
+                   console.log(errors);
+                   console.log(yer);
+
+                   res.redirect(`/user/send`);
         })
         .catch((err) =>
         {
@@ -166,7 +175,6 @@ router.post('/send', (req, res) =>
 
     }
 });
-
 
 
 
@@ -244,12 +252,12 @@ router.post('/login', (req, res) =>
                         
                         req.session.adminLogin = true;
                         // redirect to homepage
-                        res.redirect('/dashboard');
+                        res.redirect('/user/dashboard');
                     }
                     else
                     {
                         // Create a user session
-                        res.redirect('/userDashboard');
+                        res.redirect('/user/dashboard');
                     }
 
                     // console.log(req.session.userLogin);
@@ -274,19 +282,6 @@ router.post('/login', (req, res) =>
 })
 
 
-// Creating dashboard which will have all user information
-// router.get('/dashboard', (req, res) =>
-// {
-//     res.render('registration/dashboard');
-// })
-
-router.get('/userDashboard', (req, res) =>
-{
-    res.render('registration/userDash');
-})
-
-
-
 
 // Logout request
 router.get('/logout', (req, res) =>
@@ -295,57 +290,96 @@ router.get('/logout', (req, res) =>
     res.redirect('/');
 })
 
-// Getting room that contains booked
-router.get('/dashboard', (req, res) =>
+
+// Removing booked rooms
+router.post('/remove/:id', (req, res) =>
 {
-    const title = 'Airbnb | Booked Rooms';
-    const style = 'room.css';
-
-    // console.log(`User: ${user}`);
-    let roomHolder = [];
-
-    model.findById(req.session.userLogin._id)
-    .then((user) =>
-    {
-
-        for(let i = 0; i < user.bookedRooms.length; i++)
-        {
-            roomModel.findById(user.bookedRooms[i])
-            .then((roomz) =>
-            {
-                roomHolder.push(roomz);
-                console.log(roomHolder);
-            })
-        }
-
-        res.render('registration/dashboard', {
-            rooms: roomHolder,
-            ttl: title,
-            sty: style
-        })
-    })
-    .catch((err) =>
-    {
-        console.log(`Could not book rooms: ${err}`);
-    })
+    model.findByIdAndUpdate(req.session.userLogin._id,{
+        
+        $pull: {bookedRooms: req.params.id}
 })
+.then((userz) =>
+{
+    console.log(userz);
+    res.redirect('/user/dashboard');
+})
+
+})
+
 
 // Posting Room for Booking
 router.post('/save/:id', (req, res) =>
 {
+    let roomArr = [];
+    let errz = [];
+
     model.findByIdAndUpdate(req.session.userLogin._id,{
         
-        $push: {bookedRooms: `${req.params.id}`}
+        $push: {bookedRooms: req.params.id}
 
     })
     .then((userId) =>
     {
+
         console.log(userId);
-        res.redirect('/dashboard');
+        
+        userId.bookedRooms.forEach((eachRoom) =>
+        {
+            roomModel.findById((eachRoom))
+            .then((roomInfo) =>
+            {
+                console.log(`Room Array: ${roomArr}`);
+
+                for(let i = 0; i < roomArr.length; i++)
+                {
+                    if(roomArr.indexOf(roomInfo._id) === -1)
+                    {
+                           errz.push('omg value exists bro');
+                    }
+                    else
+                    {
+                            roomArr.push(roomInfo);
+                    }
+                }
+
+
+                if(errz.length > 0)
+                {
+                   res.render('rooms/room', 
+                   {
+                       err: errz
+                   })
+                }
+
+            })
+        })
+
+        res.redirect('/user/dashboard');
     })
 })
 
 
+//  WORKING CODE for Booking Rooms
+router.get('/dashboard',access, (req, res) => 
+{
+    const title = 'Airbnb | Admin Dashboard';
+    const style = 'room.css';
 
+    model.findById(req.session.userLogin._id)
+    .then((user) => 
+    Promise.all(user.bookedRooms.map((eachRoom) => roomModel.findById(eachRoom)
+    .catch((err) => 
+        {
+                console.log(`Could not book rooms: ${err}`);
+        })
+    )))
+    .then(roomArr => {
+        res.render('registration/dashboard', {
+            rooms: roomArr,
+            ttl: title,
+            sty: style
+        });
+    })
+})
 
 module.exports = router;

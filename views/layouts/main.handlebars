@@ -19,7 +19,7 @@
 
 <nav class="list">
 
-    <a href="/"><img src="img/bnbbruh.png" alt="" width="80px"></a>
+    <a href="/"><img src="/img/bnbbruh.png" alt="" width="80px" id="air-img"></a>
     
 
         {{!-- <input type="text" class="inp" placeholder="Search hotels...">
@@ -30,22 +30,22 @@
          
     <ul class="chng">
         <li><a href="/">Home</a></li>
-        <li><a href="room">Rooms</a></li>
+        <li><a href="/room/listedRooms">Rooms</a></li>
         
         {{#if admin}}
-        <li><a href="manager">Manage Rooms</a></li>
+        <li><a href="/room/manager">Manage Rooms</a></li>
         {{/if}}
 
 
         {{#if user}}
-        <li><a href="dashboard">Dashboard</a></li>
-        <li><a href="logout">Logout</a></li>
+        <li><a href="/user/dashboard">Dashboard</a></li>
+        <li><a href="/user/logout">Logout</a></li>
         {{/if}}
 
 
 {{#unless user}}
-        <li><a href="register">Sign Up</a></li>
-        <li><a href="login">Login</a></li>
+        <li><a href="/user/register">Sign Up</a></li>
+        <li><a href="/user/login">Login</a></li>
 {{/unless}}
 
         {{!-- {{#if admin}}

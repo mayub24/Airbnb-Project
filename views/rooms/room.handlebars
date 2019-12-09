@@ -1,227 +1,14 @@
-    {{!-- <h1 class="high1">Search for Rooms Using Searchbox Above!</h1>
-
-    <a href="newRoom" id="room-link"><button id="newRm">Add a New Room</button></a>
-
-<div class="imgz">
-<div class="box">
-            <!-- ITEMS [EACH ITEM WILL HAVE A SEPERATE DIV] -->
-            <!-- Item 1 -->
+{{#each err}}
+        {{this}}
+{{/each}}
 
 
-            <div class="item-1 htl">
-                <img src="img/room/room1.jpg" alt="">
+   {{#unless user}}
 
-                <div class="txt1">
-                    <p class="item-name">{{{icon}}}Sheridon Hotel</p>
-                    <p>{{{icon2}}}130 CAD/night</p>
-                    <p>{{{icon3}}}California</p>
-                    <a href="">Edit</a>
-                    <a href="">Delete</a>
-                </div>
-            </div>
+    <h3 id="bruh">Please sign up or login to book rooms!</h3>
 
-            <!-- Item 2 -->
-            <div class="item-1 htl">
-                    <img src="img/room/room2.jpg" alt="">
-    
-                    <div class="txt1">
-                        <p class="item-name">{{{icon}}}Arnesian Hotel</p>
-                        <p>{{{icon2}}}157 CAD/night</p>
-                        <p>{{{icon3}}}Dubai</p>
-                    </div>
-                </div>
+    {{/unless}}
 
-                <!-- Item 3 -->
-                <div class="item-1 htl">
-                        <img src="img/room/final6.jpg" alt="">
-        
-                        <div class="txt1">
-                            <p class="item-name">{{{icon}}}Western Hotel</p>
-                            <p>{{{icon2}}}169 CAD/night</p>
-                            <p>{{{icon3}}}China</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="item-1 htl">
-                            <img src="img/room/room4.jpg" alt="">
-            
-                            <div class="txt1">
-                                <p class="item-name">{{{icon}}}Pearl-Continental</p>
-                                <p>{{{icon2}}}177 CAD/night</p>
-                                <p>{{{icon3}}}South Africa</p>
-                            </div>
-                        </div>
-
-                    
-
-                        <!-- Item 5 -->
-
-        
-                        
-                <div class="item-1 htl">
-                <img src="img/room/roomz1.jpg" alt="">
-
-                <div class="txt1">
-                    <p class="item-name">{{{icon}}}Wind Breeze</p>
-                    <p>{{{icon2}}}189 CAD/night</p>
-                    <p>{{{icon3}}}Hong Kong</p>
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="item-1 htl">
-                    <img src="img/room/roomz2.jpg" alt="">
-    
-                    <div class="txt1">
-                        <p class="item-name">{{{icon}}}Risen Snow</p>
-                        <p>{{{icon2}}}192 CAD/night</p>
-                        <p>{{{icon3}}}Dubai</p>
-                    </div>
-                </div>
-
-                <!-- Item 3 -->
-                <div class="item-1 htl">
-                        <img src="img/room/roomz3.jpg" alt="">
-        
-                        <div class="txt1">
-                            <p class="item-name">{{{icon}}}Shining Light</p>
-                            <p>{{{icon2}}}207 CAD/night</p>
-                            <p>{{{icon3}}}Dubai</p>
-                        </div>
-                    </div>
-
-                    <!-- Item 4 -->
-                    <div class="item-1 htl">
-                            <img src="img/room/roomz4.jpg" alt="">
-            
-                            <div class="txt1">
-                                <p class="item-name">{{{icon}}}Crown Plaza</p>
-                                <p>{{{icon2}}}220 CAD/night</p>
-                                <p>{{{icon3}}}Niagara</p>
-                            </div>
-                        </div>
-                    
-
-                    
-                    
-                         <!-- Item 9 -->
-                         <div class="item-1 htl">
-                                <img src="img/room/room9.jpg" alt="">
-                
-                                <div class="txt1">
-                                    <p class="item-name">{{{icon}}}Four Points</p>
-                                    <p>{{{icon2}}}35 CAD/night</p>
-                                    <p>{{{icon3}}}London</p>
-                                </div>
-                            </div>
-
-                         <!-- Item 10 -->
-                         <div class="item-1 htl">
-                                <img src="img/room/room10.jpg" alt="">
-                
-                                <div class="txt1">
-                                    <p class="item-name">{{{icon}}}Hilton</p>
-                                    <p>{{{icon2}}}244 CAD/night</p>
-                                    <p>{{{icon3}}}Pakistan</p>
-                                </div>
-                            </div>
-
-                         <!-- Item 11 -->
-                         <div class="item-1 htl">
-                                <img src="img/room/room11.jpg" alt="">
-                
-                                <div class="txt1">
-                                    <p class="item-name">{{{icon}}}Fallsview</p>
-                                    <p>{{{icon2}}}251 CAD/night</p>
-                                    <p>{{{icon3}}}Utah</p>
-                                </div>
-                            </div>
-
-                         <!-- Item 12 -->
-                         <div class="item-1 htl">
-                                <img src="img/room/room12.jpg" alt="">
-                
-                                <div class="txt1">
-                                    <p class="item-name">{{{icon}}}Marriott</p>
-                                    <p>{{{icon2}}}260 CAD/night</p>
-                                    <p>{{{icon3}}}Murree</p>
-                                </div>
-                            </div>
-                    
-
-
-                
-
-                         <!-- Item 9 -->
-                         <div class="item-1 htl">
-                                <img src="img/room/final5.jpg" alt="">
-                
-                                <div class="txt1">
-                                    <p class="item-name">{{{icon}}}Wolf Lodge</p>
-                                    <p>{{{icon2}}}283 CAD/night</p>
-                                    <p>{{{icon3}}}Hawaii</p>
-                                </div>
-                            </div>
-
-                         <!-- Item 10 -->
-                         <div class="item-1 htl">
-                                <img src="img/room/final-room-4.jpg" alt="">
-                
-                                <div class="txt1">
-                                    <p class="item-name">{{{icon}}}SummerView</p>
-                                    <p>{{{icon2}}}299 CAD/night</p>
-                                    <p>{{{icon3}}}Paris</p>
-                                </div>
-                            </div>
-
-                         <!-- Item 11 -->
-                         <div class="item-1 htl">
-                                <img src="img/room/final-room-2.jpg" alt="">
-                
-                                <div class="txt1">
-                                    <p class="item-name">{{{icon}}}Riverdale</p>
-                                    <p>{{{icon2}}}330 CAD/night</p>
-                                    <p>{{{icon3}}}Toronto, Canada</p>
-                                </div>
-                            </div>
-
-                         <!-- Item 12 -->
-                         <div class="item-1 htl">
-                                <img src="img/room/final-room-1.jpg" alt="">
-                
-                                <div class="txt1">
-                                    <p class="item-name">{{{icon}}}ViewPoint</p>
-                                    <p>{{{icon2}}}389 CAD/night</p>
-                                    <p>{{{icon3}}}Russia</p>
-                                </div>
-                            </div>
-                    </div>
-
-
-</div>
-
-<script src="js/room.js"></script> --}}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-   {{!-- {{#unless user}}
-
-    <h3 id="bruh">Please sign up or login to add rooms!</h3>
-
-    {{/unless}} --}}
 
 
 
@@ -245,26 +32,11 @@
             <!-- Item 1 -->
             <div class="item-1 htl">
                 {{!-- Making the img a link so we get extra detail when we click on it --}}
-                <a href="/info"><img src="/img/{{this.roomPic}}" alt=""></a>
+                <a href="/room/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
 
                 <div class="txt1">
-                    <a href="/info"><button id="infoz">Show info</button></a>
-                    {{!-- <p class="item-name">Name: {{this.name}}</p> --}}
-                    {{!-- <p>Price: ${{this.price}}</p>
-                    <p>Address: {{this.location}}</p>
-                    <p># of Floors: {{this.floors}}</p>
-                    <p># of Bathrooms: {{this.bathrooms}}</p>
-                    <p>Max # of Guests: {{this.guests}}</p> --}}
-              
-                        {{!-- Value:{{user}}
-                    {{#if user}}
-                    <a href="/edit/{{this._id}}" id="edit-link"><button id="edit">Edit</button></a>
-                    <form action="/delete/{{this._id}}?_method=DELETE" method="post">
-                    <button type="submit" id="del">Delete</button>
-                    </form>
-                    {{/if}} --}}
-
-                <form action="/save/{{this._id}}" method="POST">
+                    <a href="/room/info/{{this._id}}"><button id="infoz">Show info</button></a>
+                <form action="/user/save/{{this._id}}" method="POST">
                         <button id="book" type="submit">Book Room</button>
                 </form>
                 </div>
@@ -279,36 +51,17 @@
     {{#each roomInfo}}
 {{!-- {{#if user}} --}}
     <div class="imgz">
-
-            <!-- ITEMS [EACH ITEM WILL HAVE A SEPERATE DIV] -->
-            <!-- Item 1 -->
             <div class="item-1 htl">
-                {{!-- Making the img a link so we get extra detail when we click on it --}}
-                <a href="/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
-
+                <a href="/room/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
                 <div class="txt1">
-                    <a href="/info/{{this._id}}"><button id="infoz">Show info</button></a>
-                    {{!-- <p class="item-name">Name: {{this.name}}</p> --}}
-                    {{!-- <p>Price: ${{this.price}}</p>
-                    <p>Address: {{this.location}}</p>
-                    <p># of Floors: {{this.floors}}</p>
-                    <p># of Bathrooms: {{this.bathrooms}}</p>
-                    <p>Max # of Guests: {{this.guests}}</p> --}}
-              
-                        {{!-- Value:{{user}}
-                    {{#if user}}
-                    <a href="/edit/{{this._id}}" id="edit-link"><button id="edit">Edit</button></a>
-                    <form action="/delete/{{this._id}}?_method=DELETE" method="post">
-                    <button type="submit" id="del">Delete</button>
-                    </form>
-                    {{/if}} --}}
-
+                    <a href="/room/info/{{this._id}}"><button id="infoz">Show info</button></a>
                 </div>
             </div>
         </div>
 {{!-- {{/if}} --}}
  {{/each}}
 
+    
 
       {{/if}}
  

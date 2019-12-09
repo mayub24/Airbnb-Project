@@ -1,10 +1,40 @@
+{{#if admin}}
 <h1 style="padding: 20px;text-align:center;">Welcome Admin: {{user.firstName}} {{user.lastName}}!</h1>
+{{else}}
+<h1 style="padding: 20px;text-align:center;">Welcome User: {{user.firstName}} {{user.lastName}}!</h1>
+{{/if}}
 
-{{!-- <li><a href="/save/{{this._id}}" id="edit-link"><button id="booked">Booked Rooms</button></a></li> --}}
+
+
+{{#if rooms}}
+        <h1>Booked Rooms</h1>
+{{/if}}        
+
+{{#unless rooms}}
+        <h1 style="color: red;">No Booked Rooms</h1>
+{{/unless}}
+
+<div class="box">
 
 {{#each rooms}}
-        {{this}}
-{{/each}}
+         <div class="imgz">
 
-{{rooms.name}}
-{{rooms.location}}
+            <div class="item-1 htl">
+                
+                <a href="/room/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
+
+                <div class="txt1">
+                    <a href="/room/info/{{this._id}}"><button id="infoz" type="submit">Show info</button></a>
+                </div>
+                
+                 <form action="/user/remove/{{this._id}}" method="POST">
+                        <button id="removeBook" type="submit">Remove Booked Room</button>
+                </form>
+
+            </div>
+        </div>
+{{/each}}
+</div>
+
+{{!-- {{rooms.name}}
+{{rooms.location}} --}}
