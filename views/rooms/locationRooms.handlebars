@@ -1,21 +1,41 @@
 <div class="box">
 
+{{#if user}}
+
         {{#each local}}
 
     <div class="imgz">
             <div class="item-1 htl">
                 {{!-- Making the img a link so we get extra detail when we click on it --}}
-                <a href="/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
+                <a href="/room/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
 
                 <div class="txt1">
-                    <a href="/info/{{this._id}}"><button id="infoz">Show info</button></a>
+                    <a href="/room/info/{{this._id}}"><button id="infoz">Show info</button></a>
                     
-{{#if user}}
-                <form action="/save/{{this._id}}?_method=PUT" method="POST">
+                <form action="/user/save/{{this._id}}" method="POST">
                         <button id="book" type="submit">Book Room</button>
                 </form>
-{{/if}}
                 </div>
             </div>
         </div>
  {{/each}}
+
+
+{{else}}
+
+
+         {{#each local}}
+
+    <div class="imgz">
+            <div class="item-1 htl">
+                {{!-- Making the img a link so we get extra detail when we click on it --}}
+                <a href="/room/info/{{this._id}}"><img src="/img/{{this.roomPic}}" alt=""></a>
+
+                <div class="txt1">
+                    <a href="/room/info/{{this._id}}"><button id="infoz">Show info</button></a>
+                </div>
+            </div>
+        </div>
+ {{/each}}
+
+{{/if}}

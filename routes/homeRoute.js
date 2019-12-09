@@ -44,8 +44,6 @@ router.post('/home', (req, res) =>
             const title = `${req.body.loc} Rooms`;
             const style = 'room.css';
 
-            // When a location is found...
-            // How do i pull a specific location???????
             res.render('rooms/locationRooms', 
             {
                 local: getLoc,
