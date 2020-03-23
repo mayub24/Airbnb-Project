@@ -1,7 +1,7 @@
 node_modules
 /config/keys.env
 /config/key.js
-package.json
-package-lock.json
+/package.json
+/package-lock.json
 # css/ means exclude all css files
 # js/ means exclude all js files
