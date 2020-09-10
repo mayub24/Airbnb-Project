@@ -209,6 +209,7 @@ router.post('/login', (req, res) => {
     // else compare using bcrypt compare the pass and create session and rdirect
     model.findOne({ usr: req.body.usr })
         .then((user) => {
+            console.log(user);
             if (user == null) {
                 error.push('Sorry, no username found.');
                 res.render('registration/login',
@@ -223,6 +224,8 @@ router.post('/login', (req, res) => {
                     .then((equal) => {
                         if (equal) {
 
+                            // if the passwords are equal, create a session called userLogin for that specific user
+                            // in this case, 'user' is the specified user
                             req.session.userLogin = user;
 
                             if (req.session.userLogin.type === 'Admin') {

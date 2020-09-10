@@ -14,7 +14,7 @@ const fileUpload = require('express-fileupload');
 
 
 // Getting dotenv
-require("dotenv").config({path:'./config/keys.env'});
+require("dotenv").config({ path: './config/keys.env' });
 
 // getting routes
 const homeRoute = require('./routes/homeRoute');
@@ -25,7 +25,7 @@ const roomRoute = require('./routes/roomRoute');
 const app = express();
 
 // Connecting session to express
-app.use(session({ secret: 'This is a secret!'}));
+app.use(session({ secret: 'This is a secret!' }));
 
 // Providing static files
 app.use(express.static('public'));
@@ -43,9 +43,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 
 
 // Creating a middleware that will be accessible to all express files
-app.use((req, res, next) =>
-{
+app.use((req, res, next) => {
     // Using locals to get the session name
+    // locals = get value from the routes
     res.locals.user = req.session.userLogin;
     res.locals.admin = req.session.adminLogin;
 
@@ -72,23 +72,20 @@ const MONGO_DB_URL = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.e
 mongoose.set('useFindAndModify', false);
 
 // CONNECT MONGOOSE ODM TO MONGODB
-mongoose.connect(MONGO_DB_URL, {useNewUrlParser: true})
-.then(() =>
-{
-    console.log(`Connection Successful!`);
-})
-.catch((err) =>
-{
-    console.log(`Error occured: ${err}`);
-});
+mongoose.connect(MONGO_DB_URL, { useNewUrlParser: true })
+    .then(() => {
+        console.log(`Connection Successful!`);
+    })
+    .catch((err) => {
+        console.log(`Error occured: ${err}`);
+    });
 
 
 
 // Setting up server
 const PORT = process.env.PORT || 5000;
 
-app.listen(PORT, () =>
-{
+app.listen(PORT, () => {
     console.log(`Listening for port ${PORT}...`);
 })
 
