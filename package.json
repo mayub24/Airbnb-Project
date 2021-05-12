@@ -20,7 +20,7 @@
     "express-session": "^1.17.1",
     "method-override": "^3.0.0",
     "mongoose": "^5.10.4",
-    "nodemailer": "^6.4.11",
+    "nodemailer": "^6.4.16",
     "nodemailer-sendgrid-transport": "^0.2.0"
   },
   "devDependencies": {
