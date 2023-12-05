@@ -19,7 +19,8 @@
     "express-handlebars": "^3.1.0",
     "express-session": "^1.17.1",
     "method-override": "^3.0.0",
-    "mongoose": "^5.10.4",
+    "mongodb": "^6.3.0",
+    "mongoose": "^8.0.2",
     "nodemailer": "^6.4.11",
     "nodemailer-sendgrid-transport": "^0.2.0"
   },

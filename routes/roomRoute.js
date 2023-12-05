@@ -16,7 +16,7 @@ router.get('/listedRooms', (req, res) =>
 
 
     // Use the model to pull data
-    roomModel.find()
+    roomModel.find().lean()
     .then((val) =>
     {
         res.render('rooms/room',
@@ -177,7 +177,7 @@ router.get('/info/:id', (req, res) =>
     const style = 'info.css';
 
     // Getting info about single task
-    roomModel.findById(req.params.id)
+    roomModel.findById(req.params.id).lean()
     .then((val) =>
     {
         res.render('rooms/info', 
@@ -200,7 +200,7 @@ router.get('/info/:id', (req, res) =>
 // Getting edit page
 router.get('/edit/:id',access,perm, (req, res) =>
 {
-    roomModel.findById(req.params.id)
+    roomModel.findById(req.params.id).lean()
     .then((val) =>
     {
         const title = 'Edit Room | Airbnb';
@@ -222,7 +222,7 @@ router.get('/edit/:id',access,perm, (req, res) =>
 // Putting edit page
 router.put('/edit/:id', (req, res) =>
 {
-    roomModel.findById(req.params.id)
+    roomModel.findById(req.params.id).lean()
     .then((val) =>
     {
         val.name = req.body.name,
@@ -279,8 +279,7 @@ router.get('/manager',access, (req, res) =>
 {
     const title = 'Airbnb | Admin Rooms';
     const style = 'admin.css';
-    roomModel.find()
-
+    roomModel.find().lean()
     .then((info) =>
     {
         res.render('rooms/manageRooms', 

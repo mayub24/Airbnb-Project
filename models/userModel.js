@@ -37,7 +37,7 @@ const userSchema = new Schema({
     type:
     {
         type: String,
-        default: 'User'
+        default: "User"
     },
     dateCreated:
     {

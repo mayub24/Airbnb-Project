@@ -39,6 +39,7 @@ app.use(methodOverride('_method'));
 
 // Body parser middleware
 // Tells express to parse all submitted form data into the body of the request object
+app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 
 
@@ -60,19 +61,20 @@ app.use('/user', userRoute);
 
 console.log(__dirname);
 
+
 // Specifiying handlebar stuff
 app.engine('handlebars', handle());
 app.set('view engine', 'handlebars');
 
 
 // Using environment variables in our MONGO DB URL
-const MONGO_DB_URL = `mongodb+srv://${process.env.MONGO_DB_USERNAME}:${process.env.MONGO_DB_PASS}@cluster0-o4izp.mongodb.net/${process.env.COLLECTION_NAME}?retryWrites=true&w=majority`;
+const MONGO_DB_URL = `mongodb+srv://moe:12345@cluster0.ea6epjs.mongodb.net/airbnb?retryWrites=true&w=majority`;
 
 
-mongoose.set('useFindAndModify', false);
+// mongoose.set('useFindAndModify', false);
 
 // CONNECT MONGOOSE ODM TO MONGODB
-mongoose.connect(MONGO_DB_URL, { useNewUrlParser: true })
+mongoose.connect(MONGO_DB_URL)
     .then(() => {
         console.log(`Connection Successful!`);
     })

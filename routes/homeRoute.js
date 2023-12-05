@@ -17,7 +17,7 @@ router.post('/home', (req, res) =>
 {
 
     userModel.find({location: req.body.loc}) // finding all of those locations that match typed value
-    .then((getLoc) =>
+    .lean().then((getLoc) =>
     {
 
         const title = 'Airbnb';

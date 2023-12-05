@@ -4,8 +4,6 @@ const router = express.Router();
 const model = require('../models/userModel');
 const bcrypt = require('bcryptjs');
 // const permission = require('../accessMiddleware/permission');
-const nodemailer = require('nodemailer');
-const sgTransport = require('nodemailer-sendgrid-transport');
 const roomModel = require('../models/roomModel');
 const access = require('../accessMiddleware/access');
 
@@ -92,6 +90,8 @@ router.post('/regis', (req, res) => {
         const title = 'Airbnb | Register';
         const style = 'register.css';
 
+        console.log(errors);
+
         res.render('registration/register', {
             ttl: title,
             sty: style,
@@ -110,42 +110,10 @@ router.post('/regis', (req, res) => {
         const title = 'Airbnb | Register';
         const style = 'register.css';
 
-        // SEND EMAIL
-        const options = {
-            auth: {
-                api_key: `${process.env.NODEMAILER_KEY}`
-            }
-        }
-
-        const mailer = nodemailer.createTransport(sgTransport(options)); // object that will send email
-
-        const email = {
-            to: [`${req.body.eml}`],
-            from: 'airbnb@gmail.com',
-            subject: 'Email has been verified!',
-            text: '',
-            html: `
-            <img src="https://www.stickpng.com/assets/images/580b57fcd9996e24bc43c513.png" width="90px" height="40px">
-            <br>
-            <p>Hi ${req.body.usr},
-            <br><br>
-            Welcome to Airbnb! In order to get started, you need to confirm your email address!
-            <br><br>
-            <a href="https://airbnb-web.herokuapp.com/"><button style="background-color: #ff5a5f; padding: 10px; color: white; border: none; border-radius: 6px; ">Confirm Email</button></a>
-            <br><br>
-            Thanks,
-            The Airbnb Team</p>`
-        };
-
-        mailer.sendMail(email, (err, res) => {
-            if (err) {
-                console.log(err)
-            }
-            console.log(res);
-        });
-
         // INSTANTIATE MODEL
         const newUser = new model(userData);
+
+        console.log(newUser);
 
         newUser
             .save()
@@ -207,7 +175,7 @@ router.post('/login', (req, res) => {
     // Pulling data , checking if username is null
     // if username is null, then generate error and render same page
     // else compare using bcrypt compare the pass and create session and rdirect
-    model.findOne({ usr: req.body.usr })
+    model.findOne({ usr: req.body.usr }).lean()
         .then((user) => {
             console.log(user);
             if (user == null) {
@@ -297,7 +265,7 @@ router.post('/save/:id', (req, res) => {
             console.log(userId);
 
             userId.bookedRooms.forEach((eachRoom) => {
-                roomModel.findById((eachRoom))
+                roomModel.findById((eachRoom)).lean()
                     .then((roomInfo) => {
                         console.log(`Room Array: ${roomArr}`);
 
@@ -331,10 +299,10 @@ router.get('/dashboard', access, (req, res) => {
     const title = 'Airbnb | Admin Dashboard';
     const style = 'room.css';
 
-    model.findById(req.session.userLogin._id)
+    model.findById(req.session.userLogin._id).lean()
         .then((user) =>
             Promise.all(
-                user.bookedRooms.map((eachRoom) => roomModel.findById(eachRoom)
+                user.bookedRooms.map((eachRoom) => roomModel.findById(eachRoom).lean()
                     .catch((err) => {
                         console.log(`Could not book rooms: ${err}`);
                     })
