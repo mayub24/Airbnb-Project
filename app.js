@@ -12,15 +12,16 @@ const session = require('express-session');
 // File upload
 const fileUpload = require('express-fileupload');
 
+// get admin middleware
+const admin = require('./accessMiddleware/admin');
 
-// Getting dotenv
-require("dotenv").config({ path: './config/keys.env' });
+// getting dotenv
+require('dotenv').config();
 
 // getting routes
 const homeRoute = require('./routes/homeRoute');
 const userRoute = require('./routes/registerRoute');
 const roomRoute = require('./routes/roomRoute');
-
 
 const app = express();
 
@@ -67,28 +68,25 @@ app.engine('handlebars', handle());
 app.set('view engine', 'handlebars');
 
 
-// Using environment variables in our MONGO DB URL
-const MONGO_DB_URL = `mongodb+srv://moe:12345@cluster0.ea6epjs.mongodb.net/airbnb?retryWrites=true&w=majority`;
-
-
 // mongoose.set('useFindAndModify', false);
 
 // CONNECT MONGOOSE ODM TO MONGODB
-mongoose.connect(MONGO_DB_URL)
-    .then(() => {
-        console.log(`Connection Successful!`);
+mongoose.connect(process.env.MONGO_DB_URL)
+    .then(async () => {
+        console.log("Connection successful!");
+
+        // Create admin ONLY after the DB is connected
+        console.log("Creating admin (if needed)...");
+        await admin();
+
+        // Start server
+        const PORT = process.env.PORT || 5000;
+        app.listen(PORT, () => {
+            console.log(`Listening on port ${PORT}...`);
+        });
     })
-    .catch((err) => {
-        console.log(`Error occured: ${err}`);
+    .catch(err => {
+        console.log(`Error occurred: ${err}`);
     });
-
-
-
-// Setting up server
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-    console.log(`Listening for port ${PORT}...`);
-})
 
 

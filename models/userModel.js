@@ -37,6 +37,7 @@ const userSchema = new Schema({
     type:
     {
         type: String,
+        enum: ["User", "Admin"],
         default: "User"
     },
     dateCreated:
