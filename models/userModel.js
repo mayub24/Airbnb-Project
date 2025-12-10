@@ -40,6 +40,10 @@ const userSchema = new Schema({
         enum: ["User", "Admin"],
         default: "User"
     },
+    verified: {
+        type: Boolean,
+        default: false
+    },
     dateCreated:
     {
         type: Date,

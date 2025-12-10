@@ -1,233 +1,184 @@
-// FOCUS
+
 let txtz = document.querySelectorAll("input");
-txtz.forEach((val) =>
-{
-    val.addEventListener('focus', () =>
-    {
-        val.style.color = 'black';
-        val.style.fontWeight = 'bold';
-        val.style.backgroundColor = 'lightgray';
-        val.style.border = '2px solid orange';
-    })
+txtz.forEach((val) => {
+  val.addEventListener("focus", () => {
+    val.style.color = "black";
+    val.style.fontWeight = "bold";
+    val.style.backgroundColor = "lightgray";
+    val.style.border = "2px solid orange";
+  });
 });
 
-// Blur
+
 let blurz = document.querySelectorAll("input");
-blurz.forEach((val) =>
-{
-    val.addEventListener('blur', () =>
-    {
-        val.style.border = "none";
-        val.style.backgroundColor = 'white';
-    })
+blurz.forEach((val) => {
+  val.addEventListener("blur", () => {
+    val.style.border = "none";
+    val.style.backgroundColor = "white";
+  });
 });
 
 
-// Functions to guess incorrect values right away
-document.querySelector(`#fname`).addEventListener(`blur`, checkFirst);
-document.querySelector(`#lname`).addEventListener(`blur`, checkLast);
-document.querySelector(`#userName`).addEventListener(`blur`, checkName);
-document.querySelector(`#pass`).addEventListener(`blur`, checkPass);
-document.querySelector(`#adrs`).addEventListener(`blur`, checkAddress);
-document.querySelector(`#mail`).addEventListener(`blur`, checkEmail);
-document.querySelector(`#cpass`).addEventListener(`blur`, confirmPass);
+function isFirstValid() {
+  const v = document.querySelector("#fname").value.trim();
+  return v.length >= 2 && v.length <= 20 && /^[A-Za-z]+$/.test(v);
+}
+
+function isLastValid() {
+  const v = document.querySelector("#lname").value.trim();
+  return v.length >= 2 && v.length <= 20 && /^[A-Za-z]+$/.test(v);
+}
+
+function isNameValid() {
+  const v = document.querySelector("#userName").value.trim();
+  return v.length >= 2 && v.length <= 20 && /^[A-Za-z0-9]+$/.test(v);
+}
+
+function isPassValid() {
+  const v = document.querySelector("#pass").value;
+  return (
+    v.length >= 8 &&
+    v.length <= 16 &&
+    /[A-Z]/.test(v) &&
+    /[a-z]/.test(v) &&
+    /[0-9]/.test(v) &&
+    /[!@#$%^&*<>?]/.test(v)
+  );
+}
+
+function isConfirmPassValid() {
+  return document.querySelector("#cpass").value === document.querySelector("#pass").value;
+}
+
+function isAddressValid() {
+  const v = document.querySelector("#adrs").value.trim();
+  return /^([0-9]+)\s([A-Za-z0-9\.\# ]{4,30})$/.test(v);
+}
+
+function isEmailValid() {
+  const v = document.querySelector("#mail").value.trim();
+  return /^([A-Za-z0-9_\-\.]+)@([A-Za-z0-9_\-\.]+)\.([a-z]{2,5})$/.test(v);
+}
+
+
+function showErrors(inputEl, errorEl, errors) {
+  if (errors.length) {
+    inputEl.style.border = "2px solid red";
+    errorEl.innerHTML = errors.map(e => `• ${e}`).join("<br>");
+    errorEl.style.display = "block";
+  } else {
+    inputEl.style.border = "2px solid lightgreen";
+    errorEl.innerHTML = "";
+    errorEl.style.display = "none";
+  }
+}
 
 
 function checkFirst() {
-  const fname = document.querySelector('#fname');
-  const errorSpan = document.querySelector('.f-err');
-  const val = fname.value.trim();
-
-  if (val.length < 2 || val.length > 20) {
-    fname.style.border = '2px solid red';
-    errorSpan.textContent = 'First name should be between 2 and 20 characters.';
-    errorSpan.style.display = 'block';
-    return false;
-  } else if (!/^[A-Za-z]+$/.test(val)) {
-    fname.style.border = '2px solid red';
-    errorSpan.textContent = 'First name should only contain letters.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else {
-    fname.style.border = '2px solid lightgreen';
-    errorSpan.textContent = '';
-    errorSpan.style.display = 'none';
-    return true;
-  }
+  const el = document.querySelector("#fname");
+  const err = document.querySelector(".f-err");
+  const v = el.value.trim();
+  const errors = [];
+  if (v.length < 2 || v.length > 20) errors.push("First name should be between 2 and 20 characters.");
+  if (!/^[A-Za-z]+$/.test(v)) errors.push("First name should only contain letters.");
+  showErrors(el, err, errors);
 }
-
-
 
 function checkLast() {
-  const lname = document.querySelector('#lname');
-  const errorSpan = document.querySelector('.l-err');
-  const val = lname.value.trim();
-
-  if (val.length < 2 || val.length > 20) {
-    lname.style.border = '2px solid red';
-    errorSpan.textContent = 'Last name should be between 2 and 20 characters.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else if (!/^[A-Za-z]+$/.test(val)) {
-    lname.style.border = '2px solid red';
-    errorSpan.textContent = 'Last name should only contain letters.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else {
-    lname.style.border = '2px solid lightgreen';
-    errorSpan.textContent = '';
-    errorSpan.style.display = 'none';
-        return true;
-  }
+  const el = document.querySelector("#lname");
+  const err = document.querySelector(".l-err");
+  const v = el.value.trim();
+  const errors = [];
+  if (v.length < 2 || v.length > 20) errors.push("Last name should be between 2 and 20 characters.");
+  if (!/^[A-Za-z]+$/.test(v)) errors.push("Last name should only contain letters.");
+  showErrors(el, err, errors);
 }
-
 
 function checkName() {
-  const name = document.querySelector('#userName');
-  const errorSpan = document.querySelector('.usr-err');
-  const val = name.value.trim();
-
-  if (val.length < 2 || val.length > 20) {
-    name.style.border = '2px solid red';
-    errorSpan.textContent = 'Username should be between 2 and 20 characters.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else if (!/^[A-Za-z0-9]+$/.test(val)) {
-    name.style.border = '2px solid red';
-    errorSpan.textContent = 'Username should only contain letters and numbers.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else {
-    name.style.border = '2px solid lightgreen';
-    errorSpan.textContent = '';
-    errorSpan.style.display = 'none';
-    return true;
-  }
+  const el = document.querySelector("#userName");
+  const err = document.querySelector(".usr-err");
+  const v = el.value.trim();
+  const errors = [];
+  if (v.length < 2 || v.length > 20) errors.push("Username should be between 2 and 20 characters.");
+  if (!/^[A-Za-z0-9]+$/.test(v)) errors.push("Username should only contain letters and numbers.");
+  showErrors(el, err, errors);
 }
-
-
-// DO THIS ALONG WITH ENABLED AND DISABLED BUTTON ON YOUR FORM
 
 function checkPass() {
-  const pass = document.querySelector('#pass');
-  const errorSpan = document.querySelector('.pass-err');
-  const val = pass.value;
-
-  if (val.length < 8 || val.length > 16) {
-    pass.style.border = '2px solid red';
-    errorSpan.textContent = 'Password must be between 8 and 16 characters.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else if (!/(?=.*[A-Z])/.test(val)) {
-    pass.style.border = '2px solid red';
-    errorSpan.textContent = 'Password must contain at least one uppercase letter.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else if (!/(?=.*[a-z])/.test(val)) {
-    pass.style.border = '2px solid red';
-    errorSpan.textContent = 'Password must contain at least one lowercase letter.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else if (!/(?=.*[0-9])/.test(val)) {
-    pass.style.border = '2px solid red';
-    errorSpan.textContent = 'Password must contain at least one number.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else if (!/(?=.*[!@#$%^&*<>?])/.test(val)) {
-    pass.style.border = '2px solid red';
-    errorSpan.textContent = 'Password must contain at least one special character.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else {
-    pass.style.border = '2px solid lightgreen';
-    errorSpan.textContent = '';
-    errorSpan.style.display = 'none';
-    return true;
-  }
+  const el = document.querySelector("#pass");
+  const err = document.querySelector(".pass-err");
+  const v = el.value;
+  const errors = [];
+  if (v.length < 8 || v.length > 16) errors.push("Password must be between 8 and 16 characters.");
+  if (!/[A-Z]/.test(v)) errors.push("Password must contain at least one uppercase letter.");
+  if (!/[a-z]/.test(v)) errors.push("Password must contain at least one lowercase letter.");
+  if (!/[0-9]/.test(v)) errors.push("Password must contain at least one number.");
+  if (!/[!@#$%^&*<>?]/.test(v)) errors.push("Password must contain at least one special character.");
+  showErrors(el, err, errors);
 }
-
 
 function confirmPass() {
-  const pass = document.querySelector('#pass');
-  const cpass = document.querySelector('#cpass');
-  const errorSpan = document.querySelector('.cpass-err');
-
-  if (cpass.value !== pass.value) {
-    cpass.style.border = '2px solid red';
-    errorSpan.textContent = 'Passwords do not match.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else {
-    cpass.style.border = '2px solid lightgreen';
-    errorSpan.textContent = '';
-    errorSpan.style.display = 'none';
-    return true;
-  }
+  const el = document.querySelector("#cpass");
+  const err = document.querySelector(".cpass-err");
+  const passVal = document.querySelector("#pass").value;
+  const v = el.value;
+  const errors = [];
+  if (v !== passVal) errors.push("Passwords do not match.");
+  showErrors(el, err, errors);
 }
-
-
 
 function checkAddress() {
-  const addres = document.querySelector('#adrs');
-  const errorSpan = document.querySelector('.adrs-err');
-  const val = addres.value.trim();
-
-  if (!/^([0-9]+)\s([A-Za-z0-9\.\# ]{4,30})$/.test(val)) {
-    addres.style.border = '2px solid red';
-    errorSpan.textContent = 'Please enter a valid home address (e.g., 123 Main St).';
-    errorSpan.style.display = 'block';
-        return false;
-  } else {
-    addres.style.border = '2px solid lightgreen';
-    errorSpan.textContent = '';
-    errorSpan.style.display = 'none';
-    return true;
+  const el = document.querySelector("#adrs");
+  const err = document.querySelector(".adrs-err");
+  const v = el.value.trim();
+  const errors = [];
+  if (!/^([0-9]+)\s([A-Za-z0-9\.\# ]{4,30})$/.test(v)) {
+    errors.push("Please enter a valid home address (e.g., 123 Main St).");
   }
+  showErrors(el, err, errors);
 }
-
 
 function checkEmail() {
-  const email = document.querySelector('#mail');
-  const errorSpan = document.querySelector('.email-err');
-  const val = email.value.trim();
-
-  if (!/^([A-Za-z0-9_\-\.]+)@([A-Za-z0-9_\-\.]+)\.([a-z]{2,5})$/.test(val)) {
-    email.style.border = '2px solid red';
-    errorSpan.textContent = 'Please enter a valid email address.';
-    errorSpan.style.display = 'block';
-        return false;
-  } else {
-    email.style.border = '2px solid lightgreen';
-    errorSpan.textContent = '';
-    errorSpan.style.display = 'none';
-    return true;
+  const el = document.querySelector("#mail");
+  const err = document.querySelector(".email-err");
+  const v = el.value.trim();
+  const errors = [];
+  if (!/^([A-Za-z0-9_\-\.]+)@([A-Za-z0-9_\-\.]+)\.([a-z]{2,5})$/.test(v)) {
+    errors.push("Please enter a valid email address.");
   }
+  showErrors(el, err, errors);
 }
 
-// Toggle submit button
+
 const submitBtn = document.querySelector("#sign");
-submitBtn.disabled = true; // start disabled
+submitBtn.disabled = true;
 
 function toggleSubmit() {
   const valid =
-    checkFirst() &&
-    checkLast() &&
-    checkName() &&
-    checkPass() &&
-    confirmPass() &&
-    checkAddress() &&
-    checkEmail();
+    isFirstValid() &&
+    isLastValid() &&
+    isNameValid() &&
+    isPassValid() &&
+    isConfirmPassValid() &&
+    isAddressValid() &&
+    isEmailValid();
 
   submitBtn.disabled = !valid;
 }
 
-// Attach events to inputs
+document.querySelector("#fname").addEventListener("blur", checkFirst);
+document.querySelector("#lname").addEventListener("blur", checkLast);
+document.querySelector("#userName").addEventListener("blur", checkName);
+document.querySelector("#pass").addEventListener("blur", checkPass);
+document.querySelector("#cpass").addEventListener("blur", confirmPass);
+document.querySelector("#adrs").addEventListener("blur", checkAddress);
+document.querySelector("#mail").addEventListener("blur", checkEmail);
+
 document.querySelectorAll("input").forEach((input) => {
   input.addEventListener("input", toggleSubmit);
-  input.addEventListener("blur", toggleSubmit);
 });
 
-// Final safeguard on submit
+// prevent submit until valid form
 const form = document.querySelector("form");
 form.addEventListener("submit", function (e) {
   toggleSubmit();
@@ -235,8 +186,3 @@ form.addEventListener("submit", function (e) {
     e.preventDefault();
   }
 });
-
-
-
-
-

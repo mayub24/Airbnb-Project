@@ -7,6 +7,17 @@ const bcrypt = require('bcryptjs');
 const roomModel = require('../models/roomModel');
 const access = require('../accessMiddleware/access');
 const { body, validationResult } = require('express-validator');
+const nodemailer = require('nodemailer');
+require('dotenv').config();
+
+// configure transporter (example: Gmail SMTP)
+const transporter = nodemailer.createTransport({
+  service: 'gmail',
+  auth: {
+    user: process.env.USER_EMAIL, 
+    pass: process.env.USER_PASS
+  }
+});
 
 router.get('/register', (req, res) => {
     const title = 'Airbnb | Register';
@@ -104,11 +115,46 @@ if (!errors.isEmpty()) {
 
         await newUser.save();
 
+        const verifyLink = `http://localhost:5000/user/verify?email=${req.body.eml}`;
+
+        const mailOptions = {
+            from: process.env.USER_EMAIL,
+            to: req.body.eml,
+            subject: 'Verify your Airbnb account',
+            text: `Click this link to verify your account: ${verifyLink}`
+        };
+
+        transporter.sendMail(mailOptions, (err, info) => {
+            if (err) {
+            console.error('Error sending email:', err);
+            } else {
+            console.log('Verification email sent:', info.response);
+            }
+        });
+
         res.redirect(`/user/regis`);
     } catch (error) {
         console.log(`Something went wrong -> ${error}`);
         res.status(500).send('Server Error');
     }
+});
+
+
+router.get('/verify', async (req, res) => {
+  const email = req.query.email;
+  try {
+    const user = await model.findOneAndUpdate(
+      { eml: email },
+      { $set: { verified: true } },
+      { new: true, runValidators: true }
+    );
+    if (!user) {
+      return res.status(404).send('User not found.');
+    }
+    res.send('Your account has been verified! You can now log in.');
+  } catch (err) {
+    res.status(500).send('Verification failed.');
+  }
 });
 
 
@@ -168,8 +214,18 @@ router.post('/login', (req, res) => {
                         sty: style
                     })
             }
+
             else {
-                bcrypt.compare(userData.pass, user.pass)
+                if (!user.verified) {
+                    error.push('Please verify your email before logging in.');
+                    return res.render('registration/login', {
+                        err: error,
+                        ttl: title,
+                        sty: style
+                    });
+                }
+                else {
+                        bcrypt.compare(userData.pass, user.pass)
                     .then((equal) => {
                         if (equal) {
 
@@ -204,6 +260,7 @@ router.post('/login', (req, res) => {
                                 })
                         }
                     })
+                }
             }
         })
 })
