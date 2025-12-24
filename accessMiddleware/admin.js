@@ -16,6 +16,7 @@ async function admin() {
         pass: "Admin123?",
         adrs: "N/A",
         eml: "admin@example.com",
+        verified: true,
         type: "Admin"
     });
 

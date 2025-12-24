@@ -115,7 +115,7 @@ if (!errors.isEmpty()) {
 
         await newUser.save();
 
-        const verifyLink = `http://localhost:5000/user/verify?email=${req.body.eml}`;
+        const verifyLink = `http://localhost:3000/user/verify?email=${req.body.eml}`;
 
         const mailOptions = {
             from: process.env.USER_EMAIL,
@@ -216,15 +216,6 @@ router.post('/login', (req, res) => {
             }
 
             else {
-                if (!user.verified) {
-                    error.push('Please verify your email before logging in.');
-                    return res.render('registration/login', {
-                        err: error,
-                        ttl: title,
-                        sty: style
-                    });
-                }
-                else {
                         bcrypt.compare(userData.pass, user.pass)
                     .then((equal) => {
                         if (equal) {
@@ -260,7 +251,6 @@ router.post('/login', (req, res) => {
                                 })
                         }
                     })
-                }
             }
         })
 })
